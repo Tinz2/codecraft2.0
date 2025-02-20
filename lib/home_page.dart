@@ -136,6 +136,7 @@ class _HomePageState extends State<HomePage> {
               title: Text('ออกจากระบบ: Logout'),
               onTap: () async {
                 await _auth.signOut(context);
+                Navigator.pushReplacementNamed(context, LoginPage.routeName);
               },
             ),
           ],

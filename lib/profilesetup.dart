@@ -22,8 +22,7 @@ class _MyHomePageState extends State<profilesetup> {
   final TextEditingController _lastName = TextEditingController();
   final TextEditingController _username = TextEditingController();
   final TextEditingController _phoneNumber = TextEditingController();
-  final TextEditingController _birthDateController = TextEditingController();
-  final prefix = ['นาย', 'นาง', 'นางสาว'];
+
   String? _selectedPrefix;
   DateTime? birthdayDate;
   final ImagePicker _picker = ImagePicker();
@@ -71,7 +70,6 @@ class _MyHomePageState extends State<profilesetup> {
       }
 
       await _dbRef.child('userscodecraft/$uid').update({
-        'prefix': _selectedPrefix ?? '', // ถ้า null ให้ใช้ค่าว่าง
         'firstName': _firstName.text.trim(), // ตัดช่องว่างด้านหน้าและหลัง
         'lastName': _lastName.text.trim(),
         'username': _username.text.trim(),
@@ -99,7 +97,11 @@ class _MyHomePageState extends State<profilesetup> {
     if (_formKey.currentState!.validate() && user != null) {
       _formKey.currentState!.save();
       await _uploadProfile(user.uid);
-      Navigator.pop(context, true); // ส่งค่ากลับไปยังหน้า HomePage
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+        (Route<dynamic> route) => false,
+      );
     }
   }
 
@@ -107,33 +109,11 @@ class _MyHomePageState extends State<profilesetup> {
   void initState() {
     super.initState();
     if (widget.userData != null) {
-      _selectedPrefix = widget.userData?['prefix'] ?? '';
       _firstName.text = widget.userData?['firstName'] ?? '';
       _lastName.text = widget.userData?['lastName'] ?? '';
       _username.text = widget.userData?['username'] ?? '';
       _phoneNumber.text = widget.userData?['phoneNumber'] ?? '';
       _profileImageUrl = widget.userData?['profileImage'];
-      if (widget.userData?['birthDate'] != null) {
-        birthdayDate = DateTime.parse(widget.userData!['birthDate']);
-        _birthDateController.text =
-            "${birthdayDate!.toLocal()}".split(' ')[0]; // Format date
-      }
-    }
-  }
-
-  Future<void> pickProductionDate(BuildContext context) async {
-    final DateTime? pickedDate = await showDatePicker(
-      context: context,
-      initialDate: birthdayDate ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-    );
-    if (pickedDate != null && pickedDate != birthdayDate) {
-      setState(() {
-        birthdayDate = pickedDate;
-        _birthDateController.text =
-            "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
-      });
     }
   }
 
@@ -205,23 +185,6 @@ class _MyHomePageState extends State<profilesetup> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
-                DropdownButtonFormField<String>(
-                  value: _selectedPrefix,
-                  decoration:
-                      InputDecoration(labelText: 'คํานําหน้าชื่อ (Prefix)'),
-                  items: prefix
-                      .map((category) => DropdownMenuItem<String>(
-                            value: category,
-                            child: Text(category),
-                          ))
-                      .toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedPrefix = value!;
-                    });
-                  },
-                ),
                 TextFormField(
                   controller: _firstName,
                   decoration: InputDecoration(labelText: 'ชื่อ (First Name)'),
@@ -260,23 +223,6 @@ class _MyHomePageState extends State<profilesetup> {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'กรุณากรอกเบอร์โทร';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _birthDateController,
-                  readOnly: true,
-                  decoration: InputDecoration(
-                    labelText: 'วันเกิด (BirthDay)',
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.calendar_today),
-                      onPressed: () => pickProductionDate(context),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'กรุณาเลือกวันเกิด';
                     }
                     return null;
                   },

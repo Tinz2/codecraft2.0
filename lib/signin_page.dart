@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-//เรียกใช้หน้า auth.dart
 import 'auth.dart';
+import 'home_page.dart'; // เพิ่มการ import หน้า HomePage
+import 'profilesetup.dart'; // เพิ่มการ import หน้า ProfileSetup
 
 class LoginPage extends StatefulWidget {
-//สร้างตัวแปร routeName เพื่อก าหนดชื่อเส้นทาง (Route) ส าหรับการน าทาง (Navigation) ไปยังหน้าต่าง ๆ ในแอป ตัวอย่างเช่น:
-// '/login' เป็ นชื่อเส้นทางที่เชื่อมโยงกับหน้า Login (หน้าล็อกอิน)
   static const String routeName = '/login';
   const LoginPage({super.key});
   @override
@@ -13,15 +12,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //สร้าง _formKey เก็บค่าการป้ อนผ่านฟอร์ม
   final _formKey = GlobalKey<FormState>();
-//สร้างตัวแปรที่เป็ นตัวแทนของ AuthService เพื่อให้สามารถเรียกใช้งานเมธอดต่าง ๆ ในคลาส AuthService ได้ที่อยู่ที่หน้า auth.dart ได้
   final AuthService _auth = AuthService();
-  //กา หนดค่าเริ่มตน้ของ อีเมล์และรหัสผ่าน
   String _email = '';
   String _password = '';
-  bool _isLoading = false; // เพิ่ม state ส าหรับ Loading
-// แสดง Loading Indicator
+  bool _isLoading = false;
+
   void _setLoading(bool value) {
     setState(() {
       _isLoading = value;
@@ -76,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 16),
                 if (_isLoading)
-                  const CircularProgressIndicator() // แสดง Loading Indicator
+                  const CircularProgressIndicator()
                 else
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -86,9 +82,10 @@ class _LoginPageState extends State<LoginPage> {
                           if (_formKey.currentState!.validate()) {
                             _setLoading(true);
                             try {
-                              //เรียกใช้ฟัง์กชัน signInWithEmailAndpassword ที่หน้า auth.dart
                               await _auth.signInWithEmailAndPassword(
                                   _email, _password, context);
+                              Navigator.pushReplacementNamed(
+                                  context, HomePage.routeName);
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -107,9 +104,16 @@ class _LoginPageState extends State<LoginPage> {
                           if (_formKey.currentState!.validate()) {
                             _setLoading(true);
                             try {
-                              //เรียกใช้ฟัง์กชัน registerWithEmailAndPassword ที่หน้า auth.dart
                               await _auth.registerWithEmailAndPassword(
                                   _email, _password, context);
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => profilesetup(
+                                    userData: {'email': _email},
+                                  ),
+                                ),
+                              );
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -123,13 +127,9 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: const Text('Sign Up'),
                       ),
-
-              
-              ],
-            ),
-            Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [   const SizedBox(height: 16),
+                    ],
+                  ),
+                const SizedBox(height: 16),
                 TextButton(
                   onPressed: () async {
                     if (_email.isEmpty) {
@@ -144,12 +144,10 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: const Text('Forgot Password?'),
                 ),
-              ]
+              ],
+            ),
+          ),
         ),
-              ]
-    ),
-    ),
-    ),
       ),
     );
   }

@@ -170,10 +170,6 @@ class _Stage3State extends State<Stage3> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [],
-        ),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
