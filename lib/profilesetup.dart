@@ -74,8 +74,7 @@ class _MyHomePageState extends State<profilesetup> {
         'lastName': _lastName.text.trim(),
         'username': _username.text.trim(),
         'phoneNumber': _phoneNumber.text.trim(),
-        'birthDate':
-            birthdayDate?.toIso8601String() ?? '', // ถ้า null ให้ส่งค่าว่าง
+
         'profileImage': downloadUrl ?? '', // ถ้า null ให้ส่งค่าว่าง
         'profileComplete': true,
         if (stagesData != null)
