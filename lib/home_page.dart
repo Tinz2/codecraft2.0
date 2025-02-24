@@ -106,42 +106,65 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.black,
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: Text(
-                _userData?['prefix'] != null
-                    ? '${_userData!['username']}'
-                    : 'ผู้ใช้: User',
-              ),
-              accountEmail: Text(_auth.currentUser?.email ?? 'อีเมล: Email'),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: _userData?['profileImage'] != null
-                    ? NetworkImage(
-                        _userData!['profileImage']) // URL รูปภาพจาก Firebase
-                    : AssetImage('assets/default_avatar.png') as ImageProvider,
-                child: _userData?['profileImage'] == null
-                    ? Icon(Icons.camera_alt)
-                    : null,
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.edit),
-              title: Text('แก้ไขโปรไฟล์: Edit Profile'),
-              onTap: _navigateToProfileSetup,
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('ออกจากระบบ: Logout'),
-              onTap: () async {
-                await _auth.signOut(context);
-                Navigator.pushReplacementNamed(context, LoginPage.routeName);
-              },
-            ),
-          ],
+  backgroundColor: Colors.black,
+  child: ListView(
+    padding: EdgeInsets.zero,
+    children: [
+      UserAccountsDrawerHeader(
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      colors: [Colors.blue.shade900, Colors.blue.shade400],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    ),
+  ),
+  accountName: Text(
+    _userData?['prefix'] != null
+        ? '${_userData!['username']}'
+        : 'ผู้ใช้: User',
+    style: TextStyle(color: Colors.white),
+  ),
+  accountEmail: Text(
+    _auth.currentUser?.email ?? 'อีเมล: Email',
+    style: TextStyle(color: Colors.white70),
+  ),
+  currentAccountPicture: CircleAvatar(
+    backgroundImage: _userData?['profileImage'] != null
+        ? NetworkImage(_userData!['profileImage'])
+        : AssetImage('assets/default_avatar.png') as ImageProvider,
+    child: _userData?['profileImage'] == null
+        ? Icon(Icons.camera_alt, color: Colors.white)
+        : null,
+  ),
+),
+
+      // ปุ่มแก้ไขโปรไฟล์
+      ListTile(
+        tileColor: Colors.black,
+        leading: Icon(Icons.edit, color: Colors.white),
+        title: Text(
+          'แก้ไขโปรไฟล์: Edit Profile',
+          style: TextStyle(color: Colors.white),
         ),
+        onTap: _navigateToProfileSetup,
       ),
+      // ปุ่มออกจากระบบ
+      ListTile(
+        tileColor: Colors.black,
+        leading: Icon(Icons.logout, color: Colors.orange),
+        title: Text(
+          'ออกจากระบบ: Logout',
+          style: TextStyle(color: Colors.orange),
+        ),
+        onTap: () async {
+          await _auth.signOut(context);
+          Navigator.pushReplacementNamed(context, LoginPage.routeName);
+        },
+      ),
+    ],
+  ),
+),
+
       body: IndexedStack(
         index: _selectedIndex, // เปลี่ยนค่า index เมื่อกดปุ่ม
         children: <Widget>[
