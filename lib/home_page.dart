@@ -111,9 +111,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             UserAccountsDrawerHeader(
               accountName: Text(
-                _userData?['prefix'] != null
-                    ? '${_userData!['username']}'
-                    : 'ผู้ใช้: User',
+                _userData?['username'] != null
+                    ? _userData!['username']
+                    : 'ชื่อผู้ใช้: Username',
               ),
               accountEmail: Text(_auth.currentUser?.email ?? 'อีเมล: Email'),
               currentAccountPicture: CircleAvatar(
