@@ -70,6 +70,36 @@ flutter:
    - assets/girl.png
    - assets/m1.png
    - assets/logo.png
+   - assets/gif/player/Alucard.gif
+   - assets/gif/player/Charlotte.gif
+   - assets/gif/player/Lama.gif
+   - assets/gif/player/Menya.gif
+   - assets/gif/item/chest.png
+   - assets/gif/item/coin.gif
+   - assets/gif/item/heart.gif
+   - assets/gif/item/endgame.gif
+   - assets/gif/weapon/spellbook.gif
+   - assets/gif/weapon/2sword.gif
+   - assets/gif/weapon/muramasa.gif
+   - assets/gif/weapon/thunderbolt.gif
+   - assets/gif/enamies/skale.gif
+   - assets/gif/enamies/tesa.gif
+   - assets/gif/enamies/dust.gif
+   - assets/gif/enamies/lastboss.gif
+   - assets/gif/enamies/ghiavolo.gif
+   - assets/gif/enamies/preboss.gif
+   - assets/gif/enamies/semiboss.gif
+   - assets/gif/tree/t1.gif
+   - assets/gif/tree/t2.gif
+   - assets/gif/tree/t3.gif
+   - assets/gif/tree/t4.gif
+   - assets/gif/tree/t5.gif
+   - assets/gif/charecter+ring/goldring.gif
+   - assets/gif/charecter+ring/poe.gif
+   - assets/gif/charecter+ring/w1.gif
+   - assets/gif/charecter+ring/dog.gif
+   - assets/gif/charecter+ring/w3.gif
+    
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
