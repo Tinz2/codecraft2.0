@@ -61,7 +61,7 @@ class _profilesetupState extends State<profilesetup> {
       String? downloadUrl;
       if (_profileImage != null) {
         final storageRef =
-            FirebaseStorage.instance.ref().child('profiles/$uid.jpg');
+            FirebaseStorage.instance.ref().child('profilescodecraft/$uid.jpg');
         if (kIsWeb) {
           await storageRef.putData(await _profileImage!.readAsBytes());
         } else {
@@ -72,7 +72,7 @@ class _profilesetupState extends State<profilesetup> {
         downloadUrl = _profileImageUrl;
       }
 
-      await _dbRef.child('users/$uid').update({
+      await _dbRef.child('userscodecraft/$uid').update({
         'firstName': _firstName.text.trim(),
         'lastName': _lastName.text.trim(),
         'username': _username.text.trim(),
