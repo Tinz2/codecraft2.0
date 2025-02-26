@@ -29,14 +29,15 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _saveUserData(String uid, String email) async {
     try {
-      await _firestore.collection('users').doc(uid).set({
+      await _firestore.collection('userscodecraft').doc(uid).set({
         'email': email,
         'createdAt': Timestamp.now(),
       });
       print('🔥 User data saved successfully!');
     } catch (e) {
       print('❌ Error saving user data: $e');
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error saving user data: $e')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error saving user data: $e')));
     }
   }
 
@@ -134,8 +135,10 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 12),
+                        textStyle: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.blueAccent,
                       ),
@@ -143,12 +146,17 @@ class _LoginPageState extends State<LoginPage> {
                         if (_formKey.currentState!.validate()) {
                           _setLoading(true);
                           try {
-                            UserCredential? userCredential = await _auth.signInWithEmailAndPassword(_email, _password, context);
+                            UserCredential? userCredential =
+                                await _auth.signInWithEmailAndPassword(
+                                    _email, _password, context);
                             if (userCredential != null) {
-                              Navigator.pushReplacementNamed(context, HomePage.routeName);
+                              Navigator.pushReplacementNamed(
+                                  context, HomePage.routeName);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Login failed: UserCredential is null')),
+                                SnackBar(
+                                    content: Text(
+                                        'Login failed: UserCredential is null')),
                               );
                             }
                           } catch (e) {
@@ -164,8 +172,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                        textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 12),
+                        textStyle: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.blueAccent,
                       ),
@@ -173,13 +183,17 @@ class _LoginPageState extends State<LoginPage> {
                         if (_formKey.currentState!.validate()) {
                           _setLoading(true);
                           try {
-                            UserCredential? userCredential = await _auth.registerWithEmailAndPassword(_email, _password, context);
+                            UserCredential? userCredential =
+                                await _auth.registerWithEmailAndPassword(
+                                    _email, _password, context);
                             if (userCredential != null) {
-                              await _saveUserData(userCredential.user!.uid, _email);
+                              await _saveUserData(
+                                  userCredential.user!.uid, _email);
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => profilesetup(userData: {'email': _email}),
+                                  builder: (context) =>
+                                      profilesetup(userData: {'email': _email}),
                                 ),
                               );
                             }
