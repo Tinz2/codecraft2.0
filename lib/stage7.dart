@@ -19,6 +19,7 @@ class _Stage7State extends State<Stage7> {
   bool _isGridVisible = false;
   bool _showAnswer = false;
   String _feedback = '';
+  int _currentPage = 0;
 
   final DatabaseReference _databaseRef = FirebaseDatabase.instance.ref();
   final User? _currentUser = FirebaseAuth.instance.currentUser;
@@ -35,6 +36,13 @@ class _Stage7State extends State<Stage7> {
     "flex-direction: column-reverse;",
     "justify-content: flex-end;",
     "align-self: center;"
+  ];
+  final List<String> storyImages = [
+    'assets/boy.png',
+    'assets/apple.png',
+    'assets/story_image_3.png',
+    'assets/story_image_4.png',
+    'assets/story_image_5.png',
   ];
 
   void _moveCharacter(String command) {
@@ -169,6 +177,68 @@ class _Stage7State extends State<Stage7> {
     );
   }
 
+  void _showStoryDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              contentPadding: EdgeInsets.all(20),
+              backgroundColor: Colors.black87,
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(storyImages[_currentPage],
+                      width: 200, height: 200),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      if (_currentPage > 0)
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _currentPage--;
+                            });
+                          },
+                          child: Text('Previous',
+                              style: TextStyle(color: Colors.blue)),
+                        ),
+                      Text('${_currentPage + 1}/5', //ตรงนี้เพิ่มเลขหน้า
+                          style: TextStyle(color: Colors.white)),
+                      if (_currentPage < 4) //เพิ่มหน้าตรงนี้
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _currentPage++;
+                            });
+                          },
+                          child: Text('Next',
+                              style: TextStyle(color: Colors.blue)),
+                        ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('Close', style: TextStyle(color: Colors.white)),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -207,8 +277,30 @@ class _Stage7State extends State<Stage7> {
               ),
             ),
             SizedBox(height: 10),
-            Text('Hello, here is a task for you...',
-                style: TextStyle(fontSize: 16)),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                onPressed: _showStoryDialog,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    gradient: LinearGradient(
+                      colors: [
+                        const Color.fromARGB(255, 36, 152, 247),
+                        const Color.fromARGB(255, 0, 94, 255)
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  child: Text(
+                    "กดดูเนื้อเรื่อง",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
             SizedBox(height: 20),
             GestureDetector(
               onTap: () {
@@ -227,7 +319,7 @@ class _Stage7State extends State<Stage7> {
             if (_showAnswer) ...[
               SizedBox(height: 10),
               Text(
-                "The correct answer is:\nalign-self: center;",
+                "align-self: center;",
                 style: TextStyle(color: Colors.red, fontSize: 16),
               ),
             ],
@@ -320,17 +412,15 @@ class _Stage7State extends State<Stage7> {
                     });
                   },
                 ),
-                Text('Show Grid'),
+                Text("Show Grid", style: TextStyle(color: Colors.white)),
               ],
             ),
             SizedBox(height: 20),
-            Text('Here\'s a CSS code editor below:',
-                style: TextStyle(fontSize: 16)),
             SizedBox(height: 10),
             Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: const Color.fromARGB(255, 54, 54, 54),
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
@@ -416,6 +506,8 @@ class _Stage7State extends State<Stage7> {
                             ),
                             maxLines: 1,
                             decoration: InputDecoration(
+                              contentPadding: EdgeInsets.zero,
+                              isDense: true,
                               hintText: 'Type your code here...',
                               hintStyle: TextStyle(color: Colors.grey),
                               border: InputBorder.none,
@@ -427,6 +519,22 @@ class _Stage7State extends State<Stage7> {
                         ),
                       ],
                     ),
+                  ),
+                  Row(
+                    children: [
+                      Text('6', style: TextStyle(color: Colors.grey)),
+                      SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          "}",
+                          style: TextStyle(
+                            fontFamily: 'Courier',
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
