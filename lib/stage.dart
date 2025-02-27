@@ -90,12 +90,22 @@ class Stage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Stage',
-              style: TextStyle(
-                  color: Colors.blue,
+            // ✅ ไล่สีข้อความ "Stage"
+            ShaderMask(
+              shaderCallback: (bounds) => LinearGradient(
+                colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ).createShader(bounds),
+              child: const Text(
+                'Stage',
+                style: TextStyle(
+                  color:
+                      Colors.white, // สีนี้ไม่สำคัญ เพราะ ShaderMask จะทำงานแทน
                   fontSize: 30,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             Expanded(
               child: ListView.builder(
@@ -127,37 +137,64 @@ class Stage extends StatelessWidget {
                               Text(
                                 stages[index]["title"]!,
                                 style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               const SizedBox(height: 5),
                               Text(
                                 stages[index]["description"]!,
                                 style: const TextStyle(
-                                    color: Colors.white70, fontSize: 12),
+                                  color: Colors.white70,
+                                  fontSize: 12,
+                                ),
                               ),
                               const SizedBox(height: 10),
                               SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5),
+                                width: 180, // กำหนดความกว้างของปุ่มให้เล็กลง
+                                height: 35, // กำหนดความสูงของปุ่มให้เล็กลง
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xFF0033FF),
+                                        Color(0xFF3399FF)
+                                      ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                    ),
+                                    borderRadius: BorderRadius.circular(
+                                        8), // ปรับขอบมนเล็กน้อย
+                                  ),
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors
+                                          .transparent, // ทำให้พื้นหลังของปุ่มโปร่งใส
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      padding: EdgeInsets
+                                          .zero, // ลบ padding ที่เกินออกไป
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              stages[index]["screen"],
+                                        ),
+                                      );
+                                    },
+                                    child: const Text(
+                                      'Play',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14, // ลดขนาดตัวอักษรให้เล็กลง
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            stages[index]["screen"],
-                                      ),
-                                    );
-                                  },
-                                  child: const Text('Play',
-                                      style: TextStyle(color: Colors.white)),
                                 ),
                               ),
                             ],

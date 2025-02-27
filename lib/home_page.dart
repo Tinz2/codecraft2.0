@@ -178,25 +178,40 @@ class _HomePageState extends State<HomePage> {
           Archivement(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF0033FF),
+              Color(0xFF3399FF)
+            ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
+            begin: Alignment.centerLeft, // เริ่มจากด้านซ้าย
+            end: Alignment.centerRight, // ไปทางขวา
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.share),
-            label: 'Stage',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help),
-            label: 'Archivement',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        onTap: _onItemTapped,
+        ),
+        child: BottomNavigationBar(
+          backgroundColor:
+              Colors.transparent, // ทำให้พื้นหลังโปร่งใสเพื่อให้เห็น Gradient
+          selectedItemColor: Colors.white, // สีของไอเท็มที่ถูกเลือกเป็นสีขาว
+          unselectedItemColor:
+              Colors.white, // สีของไอเท็มที่ไม่ได้เลือกเป็นสีดำ
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.share),
+              label: 'Stage',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.help),
+              label: 'Archivement',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }

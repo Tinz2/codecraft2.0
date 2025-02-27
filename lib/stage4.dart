@@ -216,13 +216,32 @@ class _Stage4State extends State<Stage4> {
                     ],
                   ),
                   SizedBox(height: 10),
-                  ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                    onPressed: () {
+                  GestureDetector(
+                    onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Close', style: TextStyle(color: Colors.white)),
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 30),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFF0033FF),
+                            Color(0xFF3399FF)
+                          ], // ไล่สีจากน้ำเงินเข้มไปฟ้าน้ำทะเล
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        'Close',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -253,10 +272,7 @@ class _Stage4State extends State<Stage4> {
             ShaderMask(
               shaderCallback: (Rect bounds) {
                 return LinearGradient(
-                  colors: [
-                    const Color.fromARGB(255, 36, 152, 247),
-                    const Color.fromARGB(255, 0, 94, 255)
-                  ],
+                  colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ).createShader(bounds);
@@ -280,9 +296,9 @@ class _Stage4State extends State<Stage4> {
                     borderRadius: BorderRadius.circular(10),
                     gradient: LinearGradient(
                       colors: [
-                        const Color.fromARGB(255, 36, 152, 247),
-                        const Color.fromARGB(255, 0, 94, 255)
-                      ],
+                        Color(0xFF0033FF),
+                        Color(0xFF3399FF)
+                      ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -511,9 +527,9 @@ class _Stage4State extends State<Stage4> {
                     borderRadius: BorderRadius.circular(10),
                     gradient: LinearGradient(
                       colors: [
-                        const Color.fromARGB(255, 36, 152, 247),
-                        const Color.fromARGB(255, 0, 94, 255)
-                      ],
+                        Color(0xFF0033FF),
+                        Color(0xFF3399FF)
+                      ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
