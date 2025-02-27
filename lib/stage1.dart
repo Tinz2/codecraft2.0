@@ -119,7 +119,8 @@ class _Stage1State extends State<Stage1> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/boy.png', width: 100, height: 100),
+              Image.asset('assets/gif/player/Maruto.gif',
+                  width: 100, height: 100),
               SizedBox(height: 10),
               Text(
                 'Stage 1 completed!',
@@ -333,18 +334,18 @@ class _Stage1State extends State<Stage1> {
                     top: (0 * (350 / 5)) + (350 / 8) - 15,
                     left: (2 * (350 / 5)) + (350 / 8) - 15,
                     child: Image.asset(
-                      'assets/apple.png',
+                      'assets/gif/charecter+ring/goldring.gif',
                       width: 30,
-                      height: 40,
+                      height: 30,
                     ),
                   ),
                   Positioned(
-                    top: (_characterRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_characterCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_characterRow * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (_characterCol * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/boy.png',
-                      width: 50,
-                      height: 50,
+                      'assets/gif/player/Maruto.gif',
+                      width: 100,
+                      height: 100,
                     ),
                   ),
                 ],

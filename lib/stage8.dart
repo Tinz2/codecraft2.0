@@ -13,11 +13,11 @@ class _Stage8State extends State<Stage8> {
   TextEditingController _answerController2 = TextEditingController();
   TextEditingController _answerController3 = TextEditingController();
   int _princeRow = 0;
-  int _princeCol = 1;
+  int _princeCol = 2;
   int _princessRow = 0;
-  int _princessCol = 0; // เจ้าหญิงอยู่ที่ (row 0, col 1) ตามเริ่มต้น
+  int _princessCol = 0;
   int _prince1Row = 0;
-  int _prince1Col = 2;
+  int _prince1Col = 1;
   bool _isGridVisible = false;
   bool _showAnswer = false;
   String _feedback = '';
@@ -50,7 +50,7 @@ class _Stage8State extends State<Stage8> {
   void _moveCharacter(String command) {
     setState(() {
       if (command ==
-          "flex-direction: column-reverse; \njustify-content: flex-end \n;align-items: center") {
+          "flex-direction: column-reverse; justify-content: flex-end; align-items: center;") {
         _princeRow = 1;
         _princeCol = 2;
 
@@ -123,8 +123,7 @@ class _Stage8State extends State<Stage8> {
 
   void _checkAnswer() {
     setState(() {
-      // ขยับตัวละครไปเก็บแอปเปิ้ลทันที
-      _princeRow = 1; // ปรับให้เดินไปที่แอปเปิ้ล
+      _princeRow = 1;
       _princeCol = 2;
 
       _princessRow = 2;
@@ -134,7 +133,6 @@ class _Stage8State extends State<Stage8> {
       _prince1Col = 2;
     });
 
-    // แสดงข้อความสำเร็จ
     _saveStageCompletion();
     _showCompletionDialog();
   }
@@ -151,7 +149,8 @@ class _Stage8State extends State<Stage8> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/boy.png', width: 100, height: 100),
+              Image.asset('assets/gif/player/Maruto.gif',
+                  width: 100, height: 100),
               SizedBox(height: 10),
               Text(
                 'Stage 8 completed!',
@@ -211,9 +210,9 @@ class _Stage8State extends State<Stage8> {
                           child: Text('Previous',
                               style: TextStyle(color: Colors.blue)),
                         ),
-                      Text('${_currentPage + 1}/5', //ตรงนี้เพิ่มเลขหน้า
+                      Text('${_currentPage + 1}/5',
                           style: TextStyle(color: Colors.white)),
-                      if (_currentPage < 4) //เพิ่มหน้าตรงนี้
+                      if (_currentPage < 4)
                         TextButton(
                           onPressed: () {
                             setState(() {
@@ -323,7 +322,7 @@ class _Stage8State extends State<Stage8> {
             if (_showAnswer) ...[
               SizedBox(height: 10),
               Text(
-                "flex-direction: column-reverse; \njustify-content: \nflex-end;align-items: center;",
+                "flex-direction: column-reverse; \njustify-content: flex-end; \nalign-items: center;",
                 style: TextStyle(color: Colors.red, fontSize: 16),
               ),
             ],
@@ -366,12 +365,12 @@ class _Stage8State extends State<Stage8> {
 
                   // แอปเปิ้ล 1 (ลูกที่ 1)
                   Positioned(
-                    top: (2 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    top: (2 * (350 / 5)) + (350 / 5 / 2) - 60,
+                    left: (2 * (350 / 5)) + (350 / 5 / 2) - 50,
                     child: Image.asset(
-                      'assets/apple.png',
-                      width: 30,
-                      height: 40,
+                      'assets/gif/enamies/ghiavolo.gif',
+                      width: 120,
+                      height: 120,
                     ),
                   ),
                   // แอปเปิ้ล 2 (ลูกที่ 2)
@@ -379,46 +378,47 @@ class _Stage8State extends State<Stage8> {
                     top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
                     left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
                     child: Image.asset(
-                      'assets/apple.png',
+                      'assets/gif/weapon/thunderbolt.gif',
                       width: 30,
                       height: 40,
                     ),
                   ),
                   // แอปเปิ้ล 3 (ลูกที่ 3)
                   Positioned(
-                    top: (1 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    top: (1 * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (2 * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/apple.png',
-                      width: 30,
-                      height: 40,
+                      'assets/gif/enamies/lastboss.gif',
+                      width: 90,
+                      height: 90,
                     ),
                   ),
                   Positioned(
-                    top: (_princeRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princeCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_princeRow * (350 / 5)) + (350 / 5 / 2) - 53,
+                    left: (_princeCol * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/boy.png',
+                      'assets/gif/player/Maruto.gif',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  // เจ้าหญิง
+                  Positioned(
+                    top: (_princessRow * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_princessCol * (350 / 5)) + (350 / 5 / 2) - 20,
+                    child: Image.asset(
+                      'assets/gif/player/Charlotte.gif',
                       width: 60,
-                      height: 50,
+                      height: 60,
                     ),
                   ),
                   Positioned(
-                    top: (_princessRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princessCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_prince1Row * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_prince1Col * (350 / 5)) + (350 / 5 / 2) - 20,
                     child: Image.asset(
-                      'assets/girl.png',
-                      width: 50,
-                      height: 50,
-                    ),
-                  ),
-                  Positioned(
-                    top: (_prince1Row * (350 / 5)) + (350 / 10) - 25,
-                    left: (_prince1Col * (350 / 5)) + (350 / 10) - 25,
-                    child: Image.asset(
-                      'assets/boy.png',
+                      'assets/gif/player/Alucard.gif',
                       width: 60,
-                      height: 50,
+                      height: 60,
                     ),
                   ),
                 ],
@@ -590,10 +590,9 @@ class _Stage8State extends State<Stage8> {
                         child: Text(
                           "}",
                           style: TextStyle(
-                            fontFamily: 'Courier',
-                            fontSize: 16,
-                            color: Colors.white,
-                          ),
+                              fontFamily: 'Courier',
+                              fontSize: 16,
+                              color: Colors.white),
                         ),
                       ),
                     ],
