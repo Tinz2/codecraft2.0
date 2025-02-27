@@ -113,7 +113,8 @@ class _Stage2State extends State<Stage2> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/boy.png', width: 100, height: 100),
+              Image.asset('assets/gif/player/Maruto.gif',
+                  width: 100, height: 100),
               SizedBox(height: 10),
               Text(
                 'Stage 2 completed!',
@@ -342,7 +343,7 @@ class _Stage2State extends State<Stage2> {
                     top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
                     left: (4 * (350 / 5)) + (350 / 8) - (30 / 2),
                     child: Image.asset(
-                      'assets/apple.png',
+                      'assets/gif/weapon/spellbook.gif',
                       width: 30,
                       height: 40,
                     ),
@@ -352,29 +353,29 @@ class _Stage2State extends State<Stage2> {
                     top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
                     left: (0 * (350 / 5)) + (350 / 8) - (30 / 2),
                     child: Image.asset(
-                      'assets/apple.png',
+                      'assets/gif/item/coin.gif',
                       width: 30,
                       height: 40,
                     ),
                   ),
                   // เจ้าชาย
                   Positioned(
-                    top: (0 * (350 / 5)) + (350 / 10) - 25,
-                    left: (0 * (350 / 5)) + (350 / 10) - 25,
+                    top: (0 * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (0 * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/boy.png',
-                      width: 60,
-                      height: 50,
+                      'assets/gif/player/Maruto.gif',
+                      width: 100,
+                      height: 100,
                     ),
                   ),
                   // เจ้าหญิง (ตำแหน่งที่ขยับได้)
                   Positioned(
-                    top: (_characterRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_characterCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_characterRow * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_characterCol * (350 / 5)) + (350 / 5 / 2) - 10,
                     child: Image.asset(
-                      'assets/girl.png',
-                      width: 50,
-                      height: 50,
+                      'assets/gif/player/Charlotte.gif',
+                      width: 60,
+                      height: 60,
                     ),
                   ),
                 ],

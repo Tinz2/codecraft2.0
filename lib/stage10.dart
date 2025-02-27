@@ -331,59 +331,60 @@ class _Stage10State extends State<Stage10> {
 
                   // แอปเปิ้ล 1 (ลูกที่ 1)
                   Positioned(
-                    top: (4 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (4 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    top: (4 * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (4 * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/apple.png',
-                      width: 30,
-                      height: 40,
+                      'assets/gif/enamies/preboss.gif',
+                      width: 90,
+                      height: 90,
                     ),
                   ),
                   // แอปเปิ้ล 2 (ลูกที่ 2)
                   Positioned(
-                    top: (2 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (4 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    top: (2 * (350 / 5)) + (350 / 5 / 2) - 20,
+                    left: (4 * (350 / 5)) + (350 / 5 / 2) - 5,
                     child: Image.asset(
-                      'assets/apple.png',
-                      width: 30,
+                      'assets/gif/item/chest.png',
+                      width: 40,
                       height: 40,
                     ),
                   ),
                   // แอปเปิ้ล 3 (ลูกที่ 3)
                   Positioned(
-                    top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (4 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    top: (0 * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (4 * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/apple.png',
-                      width: 30,
-                      height: 40,
+                      'assets/gif/enamies/semiboss.gif',
+                      width: 90,
+                      height: 90,
                     ),
                   ),
                   Positioned(
-                    top: (_princeRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princeCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_princeRow * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (_princeCol * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/boy.png',
+                      'assets/gif/player/Maruto.gif',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  // เจ้าหญิง
+                  Positioned(
+                    top: (_princessRow * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_princessCol * (350 / 5)) + (350 / 5 / 2) - 10,
+                    child: Image.asset(
+                      'assets/gif/player/Charlotte.gif',
                       width: 60,
-                      height: 50,
+                      height: 60,
                     ),
                   ),
                   Positioned(
-                    top: (_princessRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princessCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_prince1Row * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_prince1Col * (350 / 5)) + (350 / 5 / 2) - 10,
                     child: Image.asset(
-                      'assets/girl.png',
-                      width: 50,
-                      height: 50,
-                    ),
-                  ),
-                  Positioned(
-                    top: (_prince1Row * (350 / 5)) + (350 / 10) - 25,
-                    left: (_prince1Col * (350 / 5)) + (350 / 10) - 25,
-                    child: Image.asset(
-                      'assets/boy.png',
+                      'assets/gif/player/Alucard.gif',
                       width: 60,
-                      height: 50,
+                      height: 60,
                     ),
                   ),
                 ],

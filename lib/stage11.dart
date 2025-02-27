@@ -77,7 +77,8 @@ class _Stage11State extends State<Stage11> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/boy.png', width: 100, height: 100),
+              Image.asset('assets/gif/player/Maruto.gif',
+                  width: 100, height: 100),
               SizedBox(height: 10),
               Text(
                 'Stage 11 completed!',
@@ -311,165 +312,166 @@ class _Stage11State extends State<Stage11> {
                     ),
                   // ตำแหน่งของตัวละครหลัก
                   Positioned(
-                    top: (4 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (4 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    top: (4 * (350 / 5)) + (350 / 5 / 2) - 27,
+                    left: (4 * (350 / 5)) + (350 / 5 / 2) - 20,
                     child: Image.asset(
-                      'assets/tree8.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (4 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (3 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/tree7.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (4 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/tree6.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (4 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (1 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/dog.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (4 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (0 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/tree5.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (3 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (0 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/dadman.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (3 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (4 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/dadgirl.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (2 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (4 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/girl.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (1 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/box.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/endgameitem.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (4 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/tree4.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (1 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (3 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/tree3.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (1 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/tree2.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (1 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (0 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/tree1.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (2 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
-                    child: Image.asset(
-                      'assets/ring.png',
-                      width: 30,
-                      height: 40,
-                    ),
-                  ),
-                  Positioned(
-                    top: (_princeRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princeCol * (350 / 5)) + (350 / 10) - 25,
-                    child: Image.asset(
-                      'assets/boy.png',
+                      'assets/gif/tree/t4.gif',
                       width: 60,
-                      height: 50,
+                      height: 60,
                     ),
                   ),
                   Positioned(
-                    top: (_princessRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princessCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (4 * (350 / 5)) + (350 / 5 / 2) - 27,
+                    left: (3 * (350 / 5)) + (350 / 5 / 2) - 20,
                     child: Image.asset(
-                      'assets/girl.png',
+                      'assets/gif/tree/t5.gif',
+                      width: 80,
+                      height: 80,
+                    ),
+                  ),
+                  Positioned(
+                    top: (4 * (350 / 5)) + (350 / 5 / 2) - 80,
+                    left: (2 * (350 / 5)) + (350 / 5 / 2) - 50,
+                    child: Image.asset(
+                      'assets/gif/tree/t1.gif',
+                      width: 120,
+                      height: 120,
+                    ),
+                  ),
+                  Positioned(
+                    top: (4 * (350 / 5)) + (350 / 5 / 2) - 30,
+                    left: (1 * (350 / 5)) + (350 / 5 / 2) - 20,
+                    child: Image.asset(
+                      'assets/gif/charecter+ring/dog.gif',
                       width: 50,
                       height: 50,
                     ),
                   ),
                   Positioned(
-                    top: (_prince1Row * (350 / 5)) + (350 / 10) - 25,
-                    left: (_prince1Col * (350 / 5)) + (350 / 10) - 25,
+                    top: (4 * (350 / 5)) + (350 / 5 / 2) - 40,
+                    left: (0 * (350 / 5)) + (350 / 5 / 2) - 50,
                     child: Image.asset(
-                      'assets/boy.png',
-                      width: 60,
+                      'assets/gif/tree/t2.gif',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  Positioned(
+                    top: (3 * (350 / 5)) + (350 / 5 / 2) - 30,
+                    left: (0 * (350 / 5)) + (350 / 5 / 2) - 15,
+                    child: Image.asset(
+                      'assets/gif/charecter+ring/poe.gif',
+                      width: 50,
                       height: 50,
+                    ),
+                  ),
+                  Positioned(
+                    top: (3 * (350 / 5)) + (350 / 5 / 2) - 30,
+                    left: (4 * (350 / 5)) + (350 / 5 / 2) - 10,
+                    child: Image.asset(
+                      'assets/gif/player/Menya.gif',
+                      width: 50,
+                      height: 50,
+                    ),
+                  ),
+                  Positioned(
+                    top: (2 * (350 / 5)) + (350 / 5 / 2) - 30,
+                    left: (4 * (350 / 5)) + (350 / 5 / 2) - 10,
+                    child: Image.asset(
+                      'assets/gif/charecter+ring/w3.gif',
+                      width: 60,
+                      height: 60,
+                    ),
+                  ),
+                  Positioned(
+                    top: (1 * (350 / 5)) + (350 / 10) - (40 / 2),
+                    left: (2 * (350 / 5)) + (350 / 8) - (33 / 2),
+                    child: Image.asset(
+                      'assets/gif/item/chest.png',
+                      width: 40,
+                      height: 40,
+                    ),
+                  ),
+                  Positioned(
+                    top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
+                    left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    child: Image.asset(
+                      'assets/gif/item/endgame.gif',
+                      width: 30,
+                      height: 40,
+                    ),
+                  ),
+                  Positioned(
+                    top: (0 * (350 / 5)) + (350 / 5 / 2) - 60,
+                    left: (4 * (350 / 5)) + (350 / 5 / 2) - 50,
+                    child: Image.asset(
+                      'assets/gif/tree/t3.gif',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  Positioned(
+                    top: (1 * (350 / 5)) + (350 / 5 / 2) - 60,
+                    left: (3 * (350 / 5)) + (350 / 5 / 2) - 40,
+                    child: Image.asset(
+                      'assets/gif/tree/t3.gif',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  Positioned(
+                    top: (0 * (350 / 5)) + (350 / 5 / 2) - 60,
+                    left: (1 * (350 / 5)) + (350 / 5 / 2) - 50,
+                    child: Image.asset(
+                      'assets/gif/tree/t3.gif',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  Positioned(
+                    top: (1 * (350 / 5)) + (350 / 5 / 2) - 60,
+                    left: (0 * (350 / 5)) + (350 / 5 / 2) - 50,
+                    child: Image.asset(
+                      'assets/gif/tree/t3.gif',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  Positioned(
+                    top: (2 * (350 / 5)) + (350 / 10) - (40 / 2),
+                    left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    child: Image.asset(
+                      'assets/gif/charecter+ring/goldring.gif',
+                      width: 30,
+                      height: 40,
+                    ),
+                  ),
+                  Positioned(
+                    top: (_princeRow * (350 / 5)) + (350 / 5 / 2) - 30,
+                    left: (_princeCol * (350 / 5)) + (350 / 5 / 2) - 30,
+                    child: Image.asset(
+                      'assets/gif/charecter+ring/w2.gif',
+                      width: 60,
+                      height: 60,
+                    ),
+                  ),
+                  // เจ้าหญิง
+                  Positioned(
+                    top: (_princessRow * (350 / 5)) + (350 / 5 / 2) - 30,
+                    left: (_princessCol * (350 / 5)) + (350 / 5 / 2) - 15,
+                    child: Image.asset(
+                      'assets/gif/charecter+ring/w1.gif',
+                      width: 60,
+                      height: 60,
+                    ),
+                  ),
+                  Positioned(
+                    top: (_prince1Row * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_prince1Col * (350 / 5)) + (350 / 5 / 2) - 30,
+                    child: Image.asset(
+                      'assets/gif/charecter+ring/Alucard.png',
+                      width: 60,
+                      height: 60,
                     ),
                   ),
                 ],
