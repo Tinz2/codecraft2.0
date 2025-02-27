@@ -14,31 +14,31 @@ import 'stage1.dart';
 class Stage extends StatelessWidget {
   final List<Map<String, dynamic>> stages = [
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg1.png",
       "title": "Stage 1",
       "description": "บทที่1",
       "screen": Stage1()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg2.png",
       "title": "Stage 2",
       "description": "บทที่2",
       "screen": Stage2()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg3.png",
       "title": "Stage 3",
       "description": "บทที่3",
       "screen": Stage3()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg4.png",
       "title": "Stage 4",
       "description": "บทที่4",
       "screen": Stage4()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg5.png",
       "title": "Stage 5",
       "description": "บทที่5",
       "screen": Stage5()
@@ -74,7 +74,7 @@ class Stage extends StatelessWidget {
       "screen": Stage10()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg11.png",
       "title": "Stage 11",
       "description": "บทที่11",
       "screen": Stage11()
@@ -125,7 +125,7 @@ class Stage extends StatelessWidget {
                           child: Image.asset(
                             stages[index]["image"]!,
                             height: 80,
-                            width: 80,
+                            width: 150,
                             fit: BoxFit.cover,
                           ),
                         ),
