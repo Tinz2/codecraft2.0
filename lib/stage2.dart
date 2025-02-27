@@ -37,8 +37,7 @@ class _Stage2State extends State<Stage2> {
     'assets/boy.png',
     'assets/apple.png',
     'assets/story_image_3.png',
-    'assets/story_image_4.png',
-    'assets/story_image_5.png',
+    'assets/stage2.png',
   ];
   void _moveCharacter(String command) {
     setState(() {
@@ -158,7 +157,7 @@ class _Stage2State extends State<Stage2> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(storyImages[_currentPage],
-                      width: 200, height: 200),
+                      width: 500, height: 500),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -173,9 +172,9 @@ class _Stage2State extends State<Stage2> {
                           child: Text('Previous',
                               style: TextStyle(color: Colors.blue)),
                         ),
-                      Text('${_currentPage + 1}/5', //ตรงนี้เพิ่มเลขหน้า
+                      Text('${_currentPage + 1}/4', //ตรงนี้เพิ่มเลขหน้า
                           style: TextStyle(color: Colors.white)),
-                      if (_currentPage < 4) //เพิ่มหน้าตรงนี้
+                      if (_currentPage < 3) //เพิ่มหน้าตรงนี้
                         TextButton(
                           onPressed: () {
                             setState(() {
