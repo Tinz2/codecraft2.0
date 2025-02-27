@@ -150,7 +150,8 @@ class _Stage6State extends State<Stage6> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/boy.png', width: 100, height: 100),
+              Image.asset('assets/gif/player/Maruto.gif',
+                  width: 100, height: 100),
               SizedBox(height: 10),
               Text(
                 'Stage 6 completed!',
@@ -387,7 +388,7 @@ class _Stage6State extends State<Stage6> {
                     top: (2 * (350 / 5)) + (350 / 10) - (40 / 2),
                     left: (3 * (350 / 5)) + (350 / 8) - (30 / 2),
                     child: Image.asset(
-                      'assets/apple.png',
+                      'assets/gif/item/coin.gif',
                       width: 30,
                       height: 40,
                     ),
@@ -397,7 +398,7 @@ class _Stage6State extends State<Stage6> {
                     top: (2 * (350 / 5)) + (350 / 10) - (40 / 2),
                     left: (2 * (350 / 5)) + (350 / 8) - (30 / 2),
                     child: Image.asset(
-                      'assets/apple.png',
+                      'assets/gif/item/coin.gif',
                       width: 30,
                       height: 40,
                     ),
@@ -407,36 +408,37 @@ class _Stage6State extends State<Stage6> {
                     top: (2 * (350 / 5)) + (350 / 10) - (40 / 2),
                     left: (1 * (350 / 5)) + (350 / 8) - (30 / 2),
                     child: Image.asset(
-                      'assets/apple.png',
+                      'assets/gif/item/coin.gif',
                       width: 30,
                       height: 40,
                     ),
                   ),
                   Positioned(
-                    top: (_princeRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princeCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_princeRow * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (_princeCol * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/boy.png',
+                      'assets/gif/player/Maruto.gif',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  // เจ้าหญิง
+                  Positioned(
+                    top: (_princessRow * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_princessCol * (350 / 5)) + (350 / 5 / 2) - 10,
+                    child: Image.asset(
+                      'assets/gif/player/Charlotte.gif',
                       width: 60,
-                      height: 50,
+                      height: 60,
                     ),
                   ),
                   Positioned(
-                    top: (_princessRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princessCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_prince1Row * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_prince1Col * (350 / 5)) + (350 / 5 / 2) - 10,
                     child: Image.asset(
-                      'assets/girl.png',
-                      width: 50,
-                      height: 50,
-                    ),
-                  ),
-                  Positioned(
-                    top: (_prince1Row * (350 / 5)) + (350 / 10) - 25,
-                    left: (_prince1Col * (350 / 5)) + (350 / 10) - 25,
-                    child: Image.asset(
-                      'assets/boy.png',
+                      'assets/gif/player/Alucard.gif',
                       width: 60,
-                      height: 50,
+                      height: 60,
                     ),
                   ),
                 ],

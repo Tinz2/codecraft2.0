@@ -48,11 +48,11 @@ class _Stage3State extends State<Stage3> {
       if (command == "justify-content: space-evenly;") {
         // เจ้าชายย้ายไปที่ (row 0, col 1)
         _princeRow = 0;
-        _princeCol = 1;
+        _princeCol = 3;
 
         // เจ้าหญิงย้ายไปที่ (row 0, col 3)
         _princessRow = 0;
-        _princessCol = 3;
+        _princessCol = 1;
       } else if (command == "justify-content: space-between;") {
         _princeRow = 0;
         _princeCol = 4;
@@ -363,12 +363,12 @@ class _Stage3State extends State<Stage3> {
                     ),
                   // Apple 1
                   Positioned(
-                    top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
-                    left: (1 * (350 / 5)) + (350 / 8) - (30 / 2),
+                    top: (0 * (350 / 5)) + (350 / 5 / 2) - 60,
+                    left: (1 * (350 / 5)) + (350 / 5 / 2) - 50,
                     child: Image.asset(
-                      'assets/apple.png',
-                      width: 30,
-                      height: 40,
+                      'assets/gif/enamies/skale.gif',
+                      width: 120,
+                      height: 120,
                     ),
                   ),
                   // Apple 2
@@ -376,29 +376,29 @@ class _Stage3State extends State<Stage3> {
                     top: (0 * (350 / 5)) + (350 / 10) - (40 / 2),
                     left: (3 * (350 / 5)) + (350 / 8) - (30 / 2),
                     child: Image.asset(
-                      'assets/apple.png',
-                      width: 30,
+                      'assets/gif/weapon/2sword.gif',
+                      width: 50,
                       height: 40,
                     ),
                   ),
                   // เจ้าชาย
                   Positioned(
-                    top: (_princeRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princeCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_princeRow * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (_princeCol * (350 / 5)) + (350 / 5 / 2) - 30,
                     child: Image.asset(
-                      'assets/boy.png',
-                      width: 60,
-                      height: 50,
+                      'assets/gif/player/Maruto.gif',
+                      width: 100,
+                      height: 100,
                     ),
                   ),
                   // เจ้าหญิง
                   Positioned(
-                    top: (_princessRow * (350 / 5)) + (350 / 10) - 25,
-                    left: (_princessCol * (350 / 5)) + (350 / 10) - 25,
+                    top: (_princessRow * (350 / 5)) + (350 / 5 / 2) - 25,
+                    left: (_princessCol * (350 / 5)) + (350 / 5 / 2) - 10,
                     child: Image.asset(
-                      'assets/girl.png',
-                      width: 50,
-                      height: 50,
+                      'assets/gif/player/Charlotte.gif',
+                      width: 60,
+                      height: 60,
                     ),
                   ),
                 ],
