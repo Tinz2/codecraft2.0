@@ -92,10 +92,6 @@ class _ArchivementPageState extends State<Archivement> {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
