@@ -14,17 +14,17 @@ class _ArchivementPageState extends State<Archivement> {
   bool _isLoading = true;
 
   List<String> stageImages = [
+    'assets/bgstage/bg1.png',
+    'assets/bgstage/bg2.png',
+    'assets/bgstage/bg3.png',
+    'assets/bgstage/bg4.png',
+    'assets/bgstage/bg5.png',
     'assets/1.png',
     'assets/1.png',
     'assets/1.png',
     'assets/1.png',
     'assets/1.png',
-    'assets/1.png',
-    'assets/1.png',
-    'assets/1.png',
-    'assets/1.png',
-    'assets/1.png',
-    'assets/1.png',
+    'assets/bgstage/bg11.png',
   ];
 
   List<String> stageDescriptions = [

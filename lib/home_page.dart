@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'auth.dart';
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   late DatabaseReference _userRef;
   Map<String, dynamic>? _userData;
   bool _isLoading = true;
-  int _selectedIndex = 0; // ใช้เก็บ index ของหน้า
+  int _selectedIndex = 0;
 
   @override
   void initState() {
@@ -68,12 +69,11 @@ class _HomePageState extends State<HomePage> {
       ),
     ).then((result) {
       if (result == true) {
-        _fetchUserData(); // รีเฟรชข้อมูลเมื่อแก้ไขสำเร็จ
+        _fetchUserData();
       }
     });
   }
 
-  // ฟังก์ชันสำหรับการสลับหน้าใน navigation bar
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           children: [
             Image.asset(
-              'assets/logo.png', // ใส่ path ของรูปโลโก้ที่คุณต้องการใช้
+              'assets/logo.png',
               height: 45,
               width: 45,
             ),
@@ -113,12 +113,9 @@ class _HomePageState extends State<HomePage> {
             UserAccountsDrawerHeader(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF0033FF),
-                    Color(0xFF3399FF)
-                  ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
-                  begin: Alignment.centerLeft, // เริ่มจากด้านซ้าย
-                  end: Alignment.centerRight, // ไปทางขวา
+                  colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
                 ),
               ),
               accountName: Text(
@@ -140,8 +137,6 @@ class _HomePageState extends State<HomePage> {
                     : null,
               ),
             ),
-
-            // ปุ่มแก้ไขโปรไฟล์
             ListTile(
               tileColor: Colors.black,
               leading: Icon(Icons.edit, color: Colors.white),
@@ -151,7 +146,6 @@ class _HomePageState extends State<HomePage> {
               ),
               onTap: _navigateToProfileSetup,
             ),
-            // ปุ่มออกจากระบบ
             ListTile(
               tileColor: Colors.black,
               leading: Icon(Icons.logout, color: Colors.orange),
@@ -167,269 +161,111 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: [
-          // หน้า Home
-          SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.center, // จัดเรียงเนื้อหาให้อยู่ตรงกลาง
-              children: [
-                SizedBox(height: 20), // กำหนดช่องว่าง
-                // ข้อความหัวข้อหลัก
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                          text: 'Learn Code By\n',
-                          style: TextStyle(
-                              fontSize: 39,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                      TextSpan(
-                          text: 'Playing ',
-                          style: TextStyle(
-                              fontSize: 39,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white)),
-                      TextSpan(
-                          text: 'Games',
-                          style: TextStyle(
-                              fontSize: 39,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue)),
-                    ],
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 10),
-                // คำอธิบายเนื้อหา
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 10), // ระยะห่างซ้ายขวา
-                  child: Text(
-                    'Learning to code is no longer a dull experience with ITINs. '
-                    'We transform the learning process into an engaging and interactive experience, '
-                    'making it as fun and exciting as playing a game.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 19,
-                        color: Colors.white,
-                        decoration: TextDecoration.underline),
-                  ),
-                ),
-                SizedBox(height: 10),
-                // ปุ่ม "Play and Learn Code"
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xFF0151FF),
-                        Color(0xFF0095FF)
-                      ], // ไล่สีจากซ้ายไปขวา
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                    ),
-                    borderRadius: BorderRadius.circular(20), // มุมโค้งมน
-                  ),
-                  child: SizedBox(
-                    width: 200, // ปุ่มกว้างเต็มจอ
-                    height: 50, // กำหนดความสูง 50
-                    child: ElevatedButton(
-                      onPressed: () {}, // กำหนดฟังก์ชันเมื่อกดปุ่ม
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors
-                            .transparent, // ให้ปุ่มเป็นสีโปร่งใส เพื่อให้เห็น Gradient
-                        shadowColor: Colors.transparent, // เอาเงาออก
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                      ),
-                      child: Text(
-                        'Play and Learn Code',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-                // พื้นที่เล่นเกม (ตัวอย่าง)
-                Padding(
-                  padding: EdgeInsets.all(20), // เพิ่ม padding ทุกด้าน 20
-                  child: Container(
-                    height: 250, // ความสูงเริ่มต้น
-                    width: 450, // ความกว้างเต็มหน้าจอ
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 9, 109, 54),
-                      // สีพื้นหลังเทาอ่อนเพื่อรอใส่ content
-                      borderRadius: BorderRadius.circular(10), // ขอบโค้งมน
-                      border:
-                          Border.all(color: Colors.grey, width: 2), // เส้นขอบ
-                    ),
-                    child: Center(
-                      child: Text(
-                        'พื้นที่ว่างสำหรับใส่ เกม',
-                        style: TextStyle(color: Colors.grey[600], fontSize: 16),
-                      ),
-                    ),
-                  ),
-                ),
-                // ช่องใส่โค้ด
-                Container(
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 30), // ระยะห่างซ้ายขวา
-                  padding: EdgeInsets.all(15), // เพิ่ม padding
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2E2E2E), // เปลี่ยนเป็นสีเทาเข้มขึ้น
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          style:
-                              TextStyle(fontFamily: 'monospace', fontSize: 16),
-                          children: [
-                            TextSpan(
-                                text: '1 ',
-                                style: TextStyle(color: Colors.grey)),
-                            TextSpan(
-                              text: 'display',
-                              style: TextStyle(
-                                  color: Colors.lightGreenAccent, fontSize: 17),
-                            ),
-                            TextSpan(
-                                text: ': flex;\n',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 17)),
-                            TextSpan(
-                                text: '2 ',
-                                style: TextStyle(color: Colors.grey)),
-                            TextSpan(
-                              text: 'justify-content',
-                              style: TextStyle(
-                                  color: Colors.lightGreenAccent, fontSize: 17),
-                            ),
-                            TextSpan(
-                                text: ': center;',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 17)),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 8), // ระยะห่างเล็กน้อยก่อนถึงบรรทัด 3
-                      Row(
-                        children: [
-                          Text(
-                            '3 ',
+      body: Container(
+        color: Colors.black,
+        child: IndexedStack(
+          index: _selectedIndex,
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 20),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                            text: 'Learn Code By\n',
                             style: TextStyle(
-                              color: Colors.grey,
-                              fontFamily: 'monospace',
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 5),
-                              decoration: BoxDecoration(
-                                color: Color(0xFF5A5A5A), // สีเทาเข้มขึ้น
-                                borderRadius: BorderRadius.circular(6),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black
-                                        .withOpacity(0.5), // เงาสีดำ
-                                    offset: Offset(2, 2), // ตำแหน่งเงา
-                                    blurRadius: 4, // ความฟุ้งของเงา
-                                  ),
-                                ],
-                              ),
-                              child: TextField(
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'monospace'),
-                                decoration:
-                                    InputDecoration(border: InputBorder.none),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
-                // ปุ่ม "Check Answer"
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color(0xFF0151FF),
-                        Color(0xFF0095FF)
-                      ], //สีจากซ้ายไปขวา
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
+                                fontSize: 39,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                        TextSpan(
+                            text: 'Playing ',
+                            style: TextStyle(
+                                fontSize: 39,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                        TextSpan(
+                            text: 'Games',
+                            style: TextStyle(
+                                fontSize: 39,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue)),
+                      ],
                     ),
-                    borderRadius: BorderRadius.circular(20), // มุมโค้งมน
+                    textAlign: TextAlign.center,
                   ),
-                  child: ElevatedButton(
-                    onPressed: () {}, // ฟังก์ชันเมื่อกดปุ่ม
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Colors.transparent, // ให้ปุ่มเป็นสีโปร่งใส
-                      shadowColor: Colors.transparent, // ไม่มีเงา
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 12), // ระยะห่างในปุ่ม
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20), // มุมโค้งมน
-                      ),
-                    ),
-                    child: Container(
-                      width: 145, // กำหนดความกว้างของปุ่ม
-                      height: 45, // กำหนดความสูงของปุ่ม
-                      alignment: Alignment.center, // จัดข้อความให้อยู่กึ่งกลาง
-                      child: Text(
-                        'Check Answer',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    child: Text(
+                      'Learning to code is no longer a dull experience with ITINs. '
+                      'We transform the learning process into an engaging and interactive experience, '
+                      'making it as fun and exciting as playing a game.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 19,
                           color: Colors.white,
+                          decoration: TextDecoration.underline),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Color(0xFF0151FF), Color(0xFF0095FF)],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 12),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        child: Text(
+                          'Play and Learn Code',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 20),
+                  _GameArea(),
+                ],
+              ),
             ),
-          ),
-          // หน้า Stage
-          Stage(),
-          // หน้า Archivement
-          Archivement(),
-        ],
+            Stage(),
+            Archivement(),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color(0xFF0033FF),
-              Color(0xFF3399FF)
-            ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
-            begin: Alignment.centerLeft, // เริ่มจากด้านซ้าย
-            end: Alignment.centerRight, // ไปทางขวา
+            colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
           ),
         ),
         child: BottomNavigationBar(
-          backgroundColor:
-              Colors.transparent, // ทำให้พื้นหลังโปร่งใสเพื่อให้เห็น Gradient
-          selectedItemColor: Colors.white, // สีของไอเท็มที่ถูกเลือกเป็นสีขาว
-          unselectedItemColor:
-              Colors.white, // สีของไอเท็มที่ไม่ได้เลือกเป็นสีดำ
+          backgroundColor: Colors.transparent,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -447,6 +283,362 @@ class _HomePageState extends State<HomePage> {
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
         ),
+      ),
+    );
+  }
+}
+
+class _GameArea extends StatefulWidget {
+  @override
+  __GameAreaState createState() => __GameAreaState();
+}
+
+class __GameAreaState extends State<_GameArea> {
+  TextEditingController _answerController = TextEditingController();
+  int _characterRow = 0;
+  int _characterCol = 0;
+  bool _isGridVisible = false;
+  bool _showAnswer = false;
+  String _feedback = '';
+
+  final DatabaseReference _databaseRef = FirebaseDatabase.instance.ref();
+  final User? _currentUser = FirebaseAuth.instance.currentUser;
+
+  final List<String> correctCommands = [
+    "justify-content: center;",
+    "justify-content: space-between;",
+    "justify-content: space-around;",
+    "justify-content: space-evenly;",
+    "align-items: center;",
+    "align-items: flex-end;",
+    "flex-direction: column;",
+    "flex-direction: row-reverse;",
+    "flex-direction: column-reverse;",
+    "justify-content: flex-end;",
+    "align-self: center;"
+  ];
+
+  void _moveCharacter(String command) {
+    setState(() {
+      if (command == "justify-content: flex-end;") {
+        _characterRow = 0;
+        _characterCol = 4;
+      } else if (command == "justify-content: center;") {
+        _characterRow = 0;
+        _characterCol = 2;
+      } else if (command == "justify-content: space-between;") {
+        _characterRow = 0;
+        _characterCol = 4;
+      } else if (command == "justify-content: space-around;") {
+        _characterRow = 2;
+        _characterCol = 3;
+      } else if (command == "justify-content: space-evenly;") {
+        _characterRow = 2;
+        _characterCol = 1;
+      } else if (command == "align-items: center;") {
+        _characterRow = 1;
+        _characterCol = 2;
+      } else if (command == "align-items: flex-end;") {
+        _characterRow = 4;
+        _characterCol = 2;
+      } else if (command == "flex-direction: column;") {
+        _characterRow = 3;
+        _characterCol = 3;
+      } else if (command == "flex-direction: row-reverse;") {
+        _characterRow = 0;
+        _characterCol = 0;
+      } else if (command == "flex-direction: column-reverse;") {
+        _characterRow = 4;
+        _characterCol = 0;
+      } else if (command == "justify-content: flex-end;") {
+        _characterRow = 4;
+        _characterCol = 3;
+      } else if (command == "align-self: center;") {
+        _characterRow = 1;
+        _characterCol = 3;
+      }
+    });
+  }
+
+  void _checkAnswer() {
+    String answer = _answerController.text.trim();
+    if (answer == "justify-content: center;") {
+      setState(() {
+        _feedback = 'Correct! Well done!';
+      });
+      _saveStageCompletion();
+      _showCompletionDialog();
+    } else {
+      setState(() {
+        _feedback = 'Incorrect! Try again.';
+      });
+    }
+  }
+
+  void _saveStageCompletion() async {
+    if (_currentUser != null) {
+      await _databaseRef
+          .child('userscodecraft/${_currentUser!.uid}/stages')
+          .update({'stage1': true});
+    }
+  }
+
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.all(20),
+          backgroundColor: Colors.black87,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('assets/gif/player/Maruto.gif',
+                  width: 100, height: 100),
+              SizedBox(height: 10),
+              Text(
+                'test completed!',
+                style: TextStyle(color: Colors.green, fontSize: 18),
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Close', style: TextStyle(color: Colors.white)),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _showAnswer = !_showAnswer;
+              });
+            },
+            child: Text(
+              'Show Answer',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  decoration: TextDecoration.underline),
+            ),
+          ),
+          if (_showAnswer) ...[
+            SizedBox(height: 10),
+            Text(
+              "justify-content: center;",
+              style: TextStyle(color: Colors.red, fontSize: 16),
+            ),
+          ],
+          SizedBox(height: 20),
+          Container(
+            height: 350,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/grass.jpg'),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Stack(
+              children: [
+                if (_isGridVisible)
+                  Positioned.fill(
+                    child: Column(
+                      children: List.generate(5, (rowIndex) {
+                        return Expanded(
+                          child: Row(
+                            children: List.generate(5, (colIndex) {
+                              return Expanded(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.white.withOpacity(0.5),
+                                      width: 0.5,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
+                Positioned(
+                  top: (0 * (350 / 5)) + (350 / 8) - 15,
+                  left: (2 * (350 / 5)) + (350 / 8) - 15,
+                  child: Image.asset(
+                    'assets/gif/charecter+ring/goldring.gif',
+                    width: 30,
+                    height: 30,
+                  ),
+                ),
+                Positioned(
+                  top: (_characterRow * (350 / 5)) + (350 / 5 / 2) - 50,
+                  left: (_characterCol * (350 / 5)) + (350 / 5 / 2) - 30,
+                  child: Image.asset(
+                    'assets/gif/player/Maruto.gif',
+                    width: 100,
+                    height: 100,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 5),
+          Row(
+            children: [
+              Checkbox(
+                value: _isGridVisible,
+                onChanged: (bool? newValue) {
+                  setState(() {
+                    _isGridVisible = newValue ?? false;
+                  });
+                },
+              ),
+              Text("Show Grid", style: TextStyle(color: Colors.white)),
+            ],
+          ),
+          SizedBox(height: 10),
+          Container(
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 54, 54, 54),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text('1', style: TextStyle(color: Colors.grey)),
+                    SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        "#field {",
+                        style: TextStyle(
+                          fontFamily: 'Courier',
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text('2', style: TextStyle(color: Colors.grey)),
+                    SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        "display: flex;",
+                        style: TextStyle(
+                          fontFamily: 'Courier',
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 0),
+                  child: Row(
+                    children: [
+                      Text('3', style: TextStyle(color: Colors.grey)),
+                      SizedBox(width: 4),
+                      Expanded(
+                        child: TextField(
+                          controller: _answerController,
+                          style: TextStyle(
+                            fontFamily: 'Courier',
+                            fontSize: 16,
+                            color: Colors.white,
+                          ),
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.zero,
+                            isDense: true,
+                            hintText: 'Type your code here...',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            border: InputBorder.none,
+                          ),
+                          onChanged: (text) {
+                            _moveCharacter(text.trim());
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Text('4', style: TextStyle(color: Colors.grey)),
+                    SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        "}",
+                        style: TextStyle(
+                          fontFamily: 'Courier',
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          Center(
+            child: TextButton(
+              onPressed: _checkAnswer,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 50),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                child: Text(
+                  "Check Answer",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          if (_feedback.isNotEmpty) ...[
+            Text(
+              _feedback,
+              style: TextStyle(
+                  color:
+                      _feedback.contains('Correct') ? Colors.green : Colors.red,
+                  fontSize: 16),
+            ),
+          ],
+        ],
       ),
     );
   }
