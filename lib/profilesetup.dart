@@ -192,17 +192,36 @@ class _profilesetupState extends State<profilesetup> {
                 _buildTextField(_phoneNumber, 'เบอร์โทรศัพท์ (Phone Number)'),
                 SizedBox(height: 20),
                 Center(
-                  child: ElevatedButton(
-                    onPressed: _submitForm,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.blueAccent,
-                    ),
-                    child: const Text('Save'),
-                  ),
-                ),
+  child: Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xFF0033FF), Color(0xFF3399FF)], // ไล่สีจากน้ำเงินเข้มไปอ่อน
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      borderRadius: BorderRadius.circular(10), // มุมโค้งมน
+    ),
+    child: ElevatedButton(
+      onPressed: _submitForm,
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10), // ขนาดปุ่มใหญ่ขึ้น
+        backgroundColor: Colors.transparent, // ทำให้เห็น Gradient
+        shadowColor: Colors.transparent, // ปิดเงาเพื่อไม่ให้รบกวน Gradient
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10), // ให้มุมปุ่มโค้งตรงกับ Container
+        ),
+      ),
+      child: const Text(
+        'Save',
+        style: TextStyle(
+          fontSize: 18, 
+          fontWeight: FontWeight.bold,
+          color: Colors.white, // สีตัวหนังสือ
+        ),
+      ),
+    ),
+  ),
+)
               ],
             ),
           ),

@@ -113,10 +113,13 @@ class _HomePageState extends State<HomePage> {
             UserAccountsDrawerHeader(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.blue.shade900, Colors.blue.shade400],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
+            colors: [
+              Color(0xFF0033FF),
+              Color(0xFF3399FF)
+            ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
+            begin: Alignment.centerLeft, // เริ่มจากด้านซ้าย
+            end: Alignment.centerRight, // ไปทางขวา
+          ),
               ),
               accountName: Text(
                 _userData?['username'] != null
