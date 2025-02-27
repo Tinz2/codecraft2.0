@@ -70,6 +70,12 @@ flutter:
    - assets/girl.png
    - assets/m1.png
    - assets/logo.png
+   - assets/stage1.png
+   - assets/stage1.2.png
+   - assets/stage2.png
+   - assets/stage3.png
+   - assets/stage4.png
+   - assets/stage5.png
    - assets/gif/player/Alucard.gif
    - assets/gif/player/Charlotte.gif
    - assets/gif/player/Lama.gif
