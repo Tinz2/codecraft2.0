@@ -38,8 +38,8 @@ class _Stage1State extends State<Stage1> {
     'assets/boy.png',
     'assets/apple.png',
     'assets/story_image_3.png',
-    'assets/story_image_4.png',
-    'assets/story_image_5.png',
+    'assets/stage1.png',
+    'assets/stage1.2.png',
   ];
 
   void _moveCharacter(String command) {
@@ -160,7 +160,7 @@ class _Stage1State extends State<Stage1> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(storyImages[_currentPage],
-                      width: 200, height: 200),
+                      width: 500, height: 500),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
