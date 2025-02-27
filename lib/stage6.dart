@@ -43,8 +43,9 @@ class _Stage6State extends State<Stage6> {
     'assets/boy.png',
     'assets/apple.png',
     'assets/story_image_3.png',
-    'assets/story_image_4.png',
-    'assets/story_image_5.png',
+    'assets/d6.png',
+    'assets/d6.2.png',
+    'assets/d6.3.png',
   ];
 
   void _moveCharacter(String command) {
@@ -194,7 +195,7 @@ class _Stage6State extends State<Stage6> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(storyImages[_currentPage],
-                      width: 200, height: 200),
+                      width: 500, height: 500),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -209,9 +210,9 @@ class _Stage6State extends State<Stage6> {
                           child: Text('Previous',
                               style: TextStyle(color: Colors.blue)),
                         ),
-                      Text('${_currentPage + 1}/5',
+                      Text('${_currentPage + 1}/6',
                           style: TextStyle(color: Colors.white)),
-                      if (_currentPage < 4)
+                      if (_currentPage < 5)
                         TextButton(
                           onPressed: () {
                             setState(() {

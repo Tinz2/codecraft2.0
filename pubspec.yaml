@@ -105,7 +105,24 @@ flutter:
    - assets/gif/charecter+ring/w1.gif
    - assets/gif/charecter+ring/dog.gif
    - assets/gif/charecter+ring/w3.gif
-    
+   - assets/d6.png
+   - assets/d6.2.png
+   - assets/d6.3.png
+   - assets/d7.png
+   - assets/d7.2.png
+   - assets/d7.3.png
+   - assets/d7.4.png
+   - assets/d8.png
+   - assets/d8.2.png
+   - assets/d8.3.png
+   - assets/d9.png
+   - assets/d9.2.png
+   - assets/d9.3.png
+   - assets/d10.png
+   - assets/d10.2.png
+   - assets/d10.3.png
+   - assets/d11.png
+   
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
