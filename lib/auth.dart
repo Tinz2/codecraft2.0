@@ -13,7 +13,7 @@ class AuthService {
     try {
       final userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      showSnackbar(context, 'เข้าสู่ระบบส าเร็จ');
+      showSnackbar(context, 'เข้าสู่ระบบสำเร็จ');
       return userCredential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -33,7 +33,7 @@ class AuthService {
     try {
       final userCredential = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      showSnackbar(context, 'ลงทะเบียนส าเร็จ');
+      showSnackbar(context, 'ลงทะเบียนสำเร็จ');
       if (userCredential.user != null) {
 // Redirect to profile setup
         Navigator.pushReplacementNamed(context, profilesetup.routeName);
@@ -43,7 +43,7 @@ class AuthService {
       if (e.code == 'weak-password') {
         showSnackbar(context, 'รหัสผ่านที่ระบุไม่ปลอดภัย');
       } else if (e.code == 'email-already-in-use') {
-        showSnackbar(context, 'อีเมลน์ ้ีถูกใชไ้ปแลว้');
+        showSnackbar(context, 'อีเมล์นี้ถูกใชไ้ปแลว้');
       } else {
         showSnackbar(context, 'เกิดข้อผิดพลาด: ${e.message}');
       }
