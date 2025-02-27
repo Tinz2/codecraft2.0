@@ -41,6 +41,41 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  Widget _buildGradientButton(String text, VoidCallback onPressed) {
+    return InkWell(
+      onTap: onPressed,
+      borderRadius: BorderRadius.circular(10),// ปรับที่นี่เพื่อเปลี่ยนความโค้งมน
+      child: Container(
+        width: 110,//ขนาดความกว้างของปุ่ม
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.blueAccent.withOpacity(0.5),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
               const CircleAvatar(
                 radius: 50,
                 backgroundColor: Colors.transparent,
-                backgroundImage: AssetImage('assets/profile.png'),
+                backgroundImage: AssetImage('assets/logo.png'),
               ),
               const SizedBox(height: 20),
               const Text(
@@ -133,81 +168,59 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 12),
-                        textStyle: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.blueAccent,
-                      ),
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          _setLoading(true);
-                          try {
-                            UserCredential? userCredential =
-                                await _auth.signInWithEmailAndPassword(
-                                    _email, _password, context);
-                            if (userCredential != null) {
-                              Navigator.pushReplacementNamed(
-                                  context, HomePage.routeName);
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text(
-                                        'Login failed: UserCredential is null')),
-                              );
-                            }
-                          } catch (e) {
+                    _buildGradientButton('Sign In', () async {
+                      if (_formKey.currentState!.validate()) {
+                        _setLoading(true);
+                        try {
+                          UserCredential? userCredential =
+                              await _auth.signInWithEmailAndPassword(
+                                  _email, _password, context);
+                          if (userCredential != null) {
+                            Navigator.pushReplacementNamed(
+                                context, HomePage.routeName);
+                          } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Login failed: $e')),
+                              SnackBar(
+                                  content: Text(
+                                      'Login failed: UserCredential is null')),
                             );
-                          } finally {
-                            _setLoading(false);
                           }
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Login failed: $e')),
+                          );
+                        } finally {
+                          _setLoading(false);
                         }
-                      },
-                      child: const Text('Sign In'),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 12),
-                        textStyle: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.blueAccent,
-                      ),
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          _setLoading(true);
-                          try {
-                            UserCredential? userCredential =
-                                await _auth.registerWithEmailAndPassword(
-                                    _email, _password, context);
-                            if (userCredential != null) {
-                              await _saveUserData(
-                                  userCredential.user!.uid, _email);
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      profilesetup(userData: {'email': _email}),
-                                ),
-                              );
-                            }
-                          } catch (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Sign up failed: $e')),
+                      }
+                    }),
+                    _buildGradientButton('Sign Up', () async {
+                      if (_formKey.currentState!.validate()) {
+                        _setLoading(true);
+                        try {
+                          UserCredential? userCredential =
+                              await _auth.registerWithEmailAndPassword(
+                                  _email, _password, context);
+                          if (userCredential != null) {
+                            await _saveUserData(
+                                userCredential.user!.uid, _email);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    profilesetup(userData: {'email': _email}),
+                              ),
                             );
-                          } finally {
-                            _setLoading(false);
                           }
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Sign up failed: $e')),
+                          );
+                        } finally {
+                          _setLoading(false);
                         }
-                      },
-                      child: const Text('Sign Up'),
-                    ),
+                      }
+                    }),
                   ],
                 ),
             ],

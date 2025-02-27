@@ -43,7 +43,7 @@ class AuthService {
       if (e.code == 'weak-password') {
         showSnackbar(context, 'รหัสผ่านที่ระบุไม่ปลอดภัย');
       } else if (e.code == 'email-already-in-use') {
-        showSnackbar(context, 'อีเมล์นี้ถูกใชไ้ปแลว้');
+        showSnackbar(context, 'อีเมล์นี้ถูกใชไ้ปแล้ว');
       } else {
         showSnackbar(context, 'เกิดข้อผิดพลาด: ${e.message}');
       }

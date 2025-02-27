@@ -70,7 +70,12 @@ flutter:
    - assets/girl.png
    - assets/m1.png
    - assets/logo.png
-   - assets/gif/player/Maruto.gif
+   - assets/stage1.png
+   - assets/stage1.2.png
+   - assets/stage2.png
+   - assets/stage3.png
+   - assets/stage4.png
+   - assets/stage5.png
    - assets/gif/player/Alucard.gif
    - assets/gif/player/Charlotte.gif
    - assets/gif/player/Lama.gif
@@ -101,9 +106,24 @@ flutter:
    - assets/gif/charecter+ring/w1.gif
    - assets/gif/charecter+ring/dog.gif
    - assets/gif/charecter+ring/w3.gif
-   - assets/gif/charecter+ring/w2.gif
-   - assets/gif/charecter+ring/Alucard.png
-    
+   - assets/d6.png
+   - assets/d6.2.png
+   - assets/d6.3.png
+   - assets/d7.png
+   - assets/d7.2.png
+   - assets/d7.3.png
+   - assets/d7.4.png
+   - assets/d8.png
+   - assets/d8.2.png
+   - assets/d8.3.png
+   - assets/d9.png
+   - assets/d9.2.png
+   - assets/d9.3.png
+   - assets/d10.png
+   - assets/d10.2.png
+   - assets/d10.3.png
+   - assets/d11.png
+   
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

@@ -94,10 +94,7 @@ class _ArchivementPageState extends State<Archivement> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        elevation: 0,
-        title: const Text('Archivement',
-            style: TextStyle(
-                color: Colors.blue, fontSize: 20, fontWeight: FontWeight.bold)),
+        elevation: 0
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -118,12 +115,23 @@ class _ArchivementPageState extends State<Archivement> {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
-            const Text('Archievement',
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold)),
-            const SizedBox(height: 20),
+ShaderMask(
+  shaderCallback: (bounds) => LinearGradient(
+    colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  ).createShader(bounds),
+  child: const Text(
+    'Archievement',
+    style: TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: Colors.white, // สีขาวเพื่อให้ ShaderMask ทำงาน
+    ),
+  ),
+),
+const SizedBox(height: 20),
+
             StreamBuilder(
               stream: _databaseRef
                   .child('userscodecraft/${_currentUser!.uid}/stages')
@@ -214,12 +222,23 @@ class AchievementCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Text('Stage $stage',
-                style: const TextStyle(
-                    color: Colors.blue,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold)),
-            const SizedBox(height: 4),
+            ShaderMask(
+  shaderCallback: (bounds) => LinearGradient(
+    colors: [Color(0xFF0033FF), Color(0xFF3399FF)], // ไล่สีจากน้ำเงินเข้มไปฟ้าน้ำทะเล
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  ).createShader(bounds),
+  child: Text(
+    'Stage $stage',
+    style: const TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      color: Colors.white, // ใช้สีขาวเพื่อให้ ShaderMask ทำงาน
+    ),
+  ),
+),
+const SizedBox(height: 4),
+
             Text(
               description,
               textAlign: TextAlign.center,

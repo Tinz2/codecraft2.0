@@ -39,7 +39,7 @@ class _Stage4State extends State<Stage4> {
     'assets/boy.png',
     'assets/apple.png',
     'assets/story_image_3.png',
-    'assets/story_image_4.png',
+    'assets/stage4.png',
     'assets/story_image_5.png',
   ];
 
@@ -187,7 +187,7 @@ class _Stage4State extends State<Stage4> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(storyImages[_currentPage],
-                      width: 200, height: 200),
+                      width: 500, height: 500),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,9 +202,9 @@ class _Stage4State extends State<Stage4> {
                           child: Text('Previous',
                               style: TextStyle(color: Colors.blue)),
                         ),
-                      Text('${_currentPage + 1}/5', //ตรงนี้เพิ่มเลขหน้า
+                      Text('${_currentPage + 1}/4', //ตรงนี้เพิ่มเลขหน้า
                           style: TextStyle(color: Colors.white)),
-                      if (_currentPage < 4) //เพิ่มหน้าตรงนี้
+                      if (_currentPage < 3) //เพิ่มหน้าตรงนี้
                         TextButton(
                           onPressed: () {
                             setState(() {
@@ -217,13 +217,32 @@ class _Stage4State extends State<Stage4> {
                     ],
                   ),
                   SizedBox(height: 10),
-                  ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                    onPressed: () {
+                  GestureDetector(
+                    onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Close', style: TextStyle(color: Colors.white)),
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 30),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFF0033FF),
+                            Color(0xFF3399FF)
+                          ], // ไล่สีจากน้ำเงินเข้มไปฟ้าน้ำทะเล
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        'Close',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -254,10 +273,7 @@ class _Stage4State extends State<Stage4> {
             ShaderMask(
               shaderCallback: (Rect bounds) {
                 return LinearGradient(
-                  colors: [
-                    const Color.fromARGB(255, 36, 152, 247),
-                    const Color.fromARGB(255, 0, 94, 255)
-                  ],
+                  colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ).createShader(bounds);
@@ -281,9 +297,9 @@ class _Stage4State extends State<Stage4> {
                     borderRadius: BorderRadius.circular(10),
                     gradient: LinearGradient(
                       colors: [
-                        const Color.fromARGB(255, 36, 152, 247),
-                        const Color.fromARGB(255, 0, 94, 255)
-                      ],
+                        Color(0xFF0033FF),
+                        Color(0xFF3399FF)
+                      ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -512,9 +528,9 @@ class _Stage4State extends State<Stage4> {
                     borderRadius: BorderRadius.circular(10),
                     gradient: LinearGradient(
                       colors: [
-                        const Color.fromARGB(255, 36, 152, 247),
-                        const Color.fromARGB(255, 0, 94, 255)
-                      ],
+                        Color(0xFF0033FF),
+                        Color(0xFF3399FF)
+                      ], // ไล่เฉดจากน้ำเงินเข้ม -> น้ำเงินอ่อน
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),

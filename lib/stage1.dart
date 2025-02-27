@@ -38,8 +38,8 @@ class _Stage1State extends State<Stage1> {
     'assets/boy.png',
     'assets/apple.png',
     'assets/story_image_3.png',
-    'assets/story_image_4.png',
-    'assets/story_image_5.png',
+    'assets/stage1.png',
+    'assets/stage1.2.png',
   ];
 
   void _moveCharacter(String command) {
@@ -161,7 +161,7 @@ class _Stage1State extends State<Stage1> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(storyImages[_currentPage],
-                      width: 200, height: 200),
+                      width: 500, height: 500),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -191,13 +191,32 @@ class _Stage1State extends State<Stage1> {
                     ],
                   ),
                   SizedBox(height: 10),
-                  ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                    onPressed: () {
+                  GestureDetector(
+                    onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Close', style: TextStyle(color: Colors.white)),
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 30),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xFF0033FF),
+                            Color(0xFF3399FF)
+                          ], // ไล่สีจากน้ำเงินเข้มไปฟ้าน้ำทะเล
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        'Close',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -228,10 +247,7 @@ class _Stage1State extends State<Stage1> {
             ShaderMask(
               shaderCallback: (Rect bounds) {
                 return LinearGradient(
-                  colors: [
-                    const Color.fromARGB(255, 36, 152, 247),
-                    const Color.fromARGB(255, 0, 94, 255)
-                  ],
+                  colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ).createShader(bounds);
@@ -255,10 +271,7 @@ class _Stage1State extends State<Stage1> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     gradient: LinearGradient(
-                      colors: [
-                        const Color.fromARGB(255, 36, 152, 247),
-                        const Color.fromARGB(255, 0, 94, 255)
-                      ],
+                      colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -465,10 +478,7 @@ class _Stage1State extends State<Stage1> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     gradient: LinearGradient(
-                      colors: [
-                        const Color.fromARGB(255, 36, 152, 247),
-                        const Color.fromARGB(255, 0, 94, 255)
-                      ],
+                      colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
