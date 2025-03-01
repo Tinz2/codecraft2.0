@@ -175,19 +175,19 @@ class _HomePageState extends State<HomePage> {
                     TextSpan(
                       children: [
                         TextSpan(
-                            text: 'Learn Code By\n',
+                            text: 'เรียนเขียนโค้ด โดย\n',
                             style: TextStyle(
                                 fontSize: 39,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white)),
                         TextSpan(
-                            text: 'Playing ',
+                            text: 'การเล่น',
                             style: TextStyle(
                                 fontSize: 39,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white)),
                         TextSpan(
-                            text: 'Games',
+                            text: 'เกม',
                             style: TextStyle(
                                 fontSize: 39,
                                 fontWeight: FontWeight.bold,
@@ -201,9 +201,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     child: Text(
-                      'Learning to code is no longer a dull experience with ITINs. '
-                      'We transform the learning process into an engaging and interactive experience, '
-                      'making it as fun and exciting as playing a game.',
+                      'เรื่องราวของอาณาจักรแห่งหนึ่งที่ราชาปีศาจถูกปลดผนึกออกมา โค้ด อัศวินที่พระราชาได้ไว้ใจให้ออกไปปราบปีศาจและรวบรวมอาวุธโบราณทั้ง 4 เพื่อผนึกราชาปีศาจ การเดินทางของอัศวินโค้ดจะเป็นอย่างไรต่อไปจะสามารถจัดการกับราชาปีศาจได้หรือไม่',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 19,
@@ -424,27 +422,6 @@ class __GameAreaState extends State<_GameArea> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                _showAnswer = !_showAnswer;
-              });
-            },
-            child: Text(
-              'Show Answer',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  decoration: TextDecoration.underline),
-            ),
-          ),
-          if (_showAnswer) ...[
-            SizedBox(height: 10),
-            Text(
-              "justify-content: center;",
-              style: TextStyle(color: Colors.red, fontSize: 16),
-            ),
-          ],
           SizedBox(height: 20),
           Container(
             height: 350,
@@ -576,7 +553,7 @@ class __GameAreaState extends State<_GameArea> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.zero,
                             isDense: true,
-                            hintText: 'Type your code here...',
+                            hintText: 'justify-content: center;',
                             hintStyle: TextStyle(color: Colors.grey),
                             border: InputBorder.none,
                           ),
