@@ -44,31 +44,31 @@ class Stage extends StatelessWidget {
       "screen": Stage5()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg6.png",
       "title": "Stage 6",
       "description": "บทที่6",
       "screen": Stage6()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg7.png",
       "title": "Stage 7",
       "description": "บทที่7",
       "screen": Stage7()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg8.png",
       "title": "Stage 8",
       "description": "บทที่8",
       "screen": Stage8()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg9.png",
       "title": "Stage 9",
       "description": "บทที่9",
       "screen": Stage9()
     },
     {
-      "image": "assets/1.png",
+      "image": "assets/bgstage/bg10.png",
       "title": "Stage 10",
       "description": "บทที่10",
       "screen": Stage10()

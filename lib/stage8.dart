@@ -211,9 +211,9 @@ class _Stage8State extends State<Stage8> {
                           child: Text('Previous',
                               style: TextStyle(color: Colors.blue)),
                         ),
-                      Text('${_currentPage + 1}/5',
+                      Text('${_currentPage + 1}/6',
                           style: TextStyle(color: Colors.white)),
-                      if (_currentPage < 4)
+                      if (_currentPage < 5)
                         TextButton(
                           onPressed: () {
                             setState(() {

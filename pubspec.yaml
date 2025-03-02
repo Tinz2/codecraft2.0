@@ -133,6 +133,11 @@ flutter:
    - assets/gif/charecter+ring/w2.gif
    - assets/gif/charecter+ring/w1.gif
    - assets/gif/charecter+ring/Alucard.png
+   - assets/bgstage/bg6.png
+   - assets/bgstage/bg7.png
+   - assets/bgstage/bg8.png
+   - assets/bgstage/bg9.png
+   - assets/bgstage/bg10.png
    
   # To add assets to your application, add an assets section, like this:
   # assets:
