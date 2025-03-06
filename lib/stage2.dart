@@ -280,6 +280,7 @@ class _Stage2State extends State<Stage2> {
                 ),
               ),
             ),
+            SizedBox(height: 10),
             GestureDetector(
               onTap: () {
                 setState(() {

@@ -287,6 +287,7 @@ class _Stage4State extends State<Stage4> {
                 ),
               ),
             ),
+            SizedBox(height: 10),
             Align(
               alignment: Alignment.centerLeft,
               child: TextButton(
