@@ -142,7 +142,8 @@ class _Stage3State extends State<Stage3> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/boy.png', width: 100, height: 100),
+              Image.asset('assets/gif/player/Maruto.gif',
+                  width: 100, height: 100),
               SizedBox(height: 10),
               Text(
                 'Stage 3 completed!',
@@ -304,6 +305,7 @@ class _Stage3State extends State<Stage3> {
                 ),
               ),
             ),
+            SizedBox(height: 10),
             GestureDetector(
               onTap: () {
                 setState(() {
