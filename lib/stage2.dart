@@ -34,9 +34,9 @@ class _Stage2State extends State<Stage2> {
     "align-self: center;"
   ];
   final List<String> storyImages = [
-    'assets/boy.png',
-    'assets/apple.png',
-    'assets/story_image_3.png',
+    'assets/story/2.1.png',
+    'assets/story/2.2.png',
+    'assets/story/2.3.png',
     'assets/stage2.png',
   ];
   void _moveCharacter(String command) {

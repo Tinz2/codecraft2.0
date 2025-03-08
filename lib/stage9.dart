@@ -32,9 +32,9 @@ class _Stage9State extends State<Stage9> {
     "align-items: center;"
   ];
   final List<String> storyImages = [
-    'assets/boy.png',
-    'assets/apple.png',
-    'assets/story_image_3.png',
+    'assets/story/9.1.png',
+    'assets/story/9.2.png',
+    'assets/story/9.3.png',
     'assets/d9.png',
     'assets/d9.2.png',
     'assets/d9.3.png',

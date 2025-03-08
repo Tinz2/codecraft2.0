@@ -36,9 +36,9 @@ class _Stage1State extends State<Stage1> {
 
   final List<String> storyImages = [
     //ตรงนี้นะออมโอ๊ตที่แก้รูป
-    'assets/boy.png',
-    'assets/apple.png',
-    'assets/story_image_3.png',
+    'assets/story/1.1.png',
+    'assets/story/1.2.png',
+    'assets/story/1.3.png',
     'assets/stage1.png',
     'assets/stage1.2.png',
   ];

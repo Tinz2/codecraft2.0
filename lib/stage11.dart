@@ -26,9 +26,10 @@ class _Stage11State extends State<Stage11> {
   final User? _currentUser = FirebaseAuth.instance.currentUser;
 
   final List<String> storyImages = [
-    'assets/boy.png',
-    'assets/apple.png',
-    'assets/story_image_3.png',
+    'assets/story/11.1.png',
+    'assets/story/11.2.png',
+    'assets/story/11.3.png',
+    'assets/story/11.4.png',
     'assets/d11.png',
   ];
 
@@ -138,7 +139,7 @@ class _Stage11State extends State<Stage11> {
                           child: Text('Previous',
                               style: TextStyle(color: Colors.blue)),
                         ),
-                      Text('${_currentPage + 1}/4',
+                      Text('${_currentPage + 1}/5',
                           style: TextStyle(color: Colors.white)),
                       if (_currentPage < 3)
                         TextButton(

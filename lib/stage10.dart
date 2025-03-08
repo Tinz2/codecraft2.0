@@ -32,9 +32,9 @@ class _Stage10State extends State<Stage10> {
     "align-items: flex-end;"
   ];
   final List<String> storyImages = [
-    'assets/boy.png',
-    'assets/apple.png',
-    'assets/story_image_3.png',
+    'assets/story/10.1.png',
+    'assets/story/10.2.png',
+    'assets/story/10.3.png',
     'assets/d10.png',
     'assets/d10.2.png',
     'assets/d10.3.png',
