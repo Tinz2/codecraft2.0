@@ -4,15 +4,16 @@ allprojects {
         mavenCentral()
     }
 }
-buildscript { 
-    repositories{ 
-        google() 
-        jcenter() 
-    } 
-    dependencies { 
-     classpath 'com.google.gms.google-services:4.4.2'  
-} 
-} 
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.google.gms:google-services:4.4.2' // ตรวจสอบเวอร์ชันนี้
+    }
+}
 rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"

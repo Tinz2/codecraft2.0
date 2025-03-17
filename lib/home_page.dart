@@ -6,6 +6,7 @@ import 'profilesetup.dart';
 import 'stage.dart';
 import 'archivement.dart';
 import 'signin_page.dart';
+import 'characters.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = '/homepage';
@@ -100,7 +101,7 @@ class _HomePageState extends State<HomePage> {
               width: 45,
             ),
             SizedBox(width: 10),
-            Text('Codecraft'),
+            Text('Codecraft', style: TextStyle(fontFamily: 'Kanit', ),),
           ],
         ),
         backgroundColor: Colors.black,
@@ -228,6 +229,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Stage(),
             Archivement(),
+            CharactersPage(), // Add CharactersPage here
           ],
         ),
       ),
@@ -239,26 +241,39 @@ class _HomePageState extends State<HomePage> {
             end: Alignment.centerRight,
           ),
         ),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.transparent,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.share),
-              label: 'Stage',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.help),
-              label: 'Archivement',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.transparent,
+          ),
+          child: BottomNavigationBar(
+            backgroundColor: Colors.transparent,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icon/sword.png'),
+                ),
+                label: 'Stage',
+              ),
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage('assets/icon/shield.png'),
+                ),
+                label: 'Archivement',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Characters',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+          ),
         ),
       ),
     );
@@ -402,60 +417,62 @@ class __GameAreaState extends State<_GameArea> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20),
-          Container(
-            height: 350,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/grass.jpg'),
-                fit: BoxFit.cover,
+          Center(
+            child: Container(
+              height: 400,
+              width: 400,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/bgstage/bgstage01.png'),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(10),
               ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Stack(
-              children: [
-                if (_isGridVisible)
-                  Positioned.fill(
-                    child: Column(
-                      children: List.generate(5, (rowIndex) {
-                        return Expanded(
-                          child: Row(
-                            children: List.generate(5, (colIndex) {
-                              return Expanded(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.white.withOpacity(0.5),
-                                      width: 0.5,
+              child: Stack(
+                children: [
+                  if (_isGridVisible)
+                    Positioned.fill(
+                      child: Column(
+                        children: List.generate(5, (rowIndex) {
+                          return Expanded(
+                            child: Row(
+                              children: List.generate(5, (colIndex) {
+                                return Expanded(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white.withOpacity(0.5),
+                                        width: 0.5,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              );
-                            }),
-                          ),
-                        );
-                      }),
+                                );
+                              }),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  Positioned(
+                    top: (0 * (350 / 5)) + (350 / 8) - 15,
+                    left: (2 * (350 / 5)) + (350 / 8) - 15,
+                    child: Image.asset(
+                      'assets/gif/charecter+ring/goldring.gif',
+                      width: 35,
+                      height: 35,
                     ),
                   ),
-                Positioned(
-                  top: (0 * (350 / 5)) + (350 / 8) - 15,
-                  left: (2 * (350 / 5)) + (350 / 8) - 15,
-                  child: Image.asset(
-                    'assets/gif/charecter+ring/goldring.gif',
-                    width: 30,
-                    height: 30,
+                  Positioned(
+                    top: (_characterRow * (350 / 5)) + (350 / 5 / 2) - 50,
+                    left: (_characterCol * (350 / 5)) + (350 / 5 / 2) - 30,
+                    child: Image.asset(
+                      'assets/gif/player/Maruto.gif',
+                      width: 120,
+                      height: 120,
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: (_characterRow * (350 / 5)) + (350 / 5 / 2) - 50,
-                  left: (_characterCol * (350 / 5)) + (350 / 5 / 2) - 30,
-                  child: Image.asset(
-                    'assets/gif/player/Maruto.gif',
-                    width: 100,
-                    height: 100,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SizedBox(height: 5),

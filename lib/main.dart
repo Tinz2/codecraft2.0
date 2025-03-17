@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'characters.dart';
 
 //Method หลักทีRun
 void main() async {
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: 'Kanit', // ตั้งค่าฟอนต์เริ่มต้นเป็น Kanit
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.blue,
           iconTheme: IconThemeData(color: Colors.white),
@@ -59,6 +61,7 @@ class MyApp extends StatelessWidget {
         LoginPage.routeName: (BuildContext context) => const LoginPage(),
         HomePage.routeName: (BuildContext context) => HomePage(),
         profilesetup.routeName: (BuildContext context) => profilesetup(),
+         CharactersPage.routeName: (BuildContext context) => CharactersPage(),
       },
     );
   }

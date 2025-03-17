@@ -254,7 +254,7 @@ class _Stage1State extends State<Stage1> {
                 ).createShader(bounds);
               },
               child: Text(
-                'Stage 1',
+                'อาณาจักรที่สงบสุข',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -307,62 +307,62 @@ class _Stage1State extends State<Stage1> {
               ),
             ],
             SizedBox(height: 20),
-            Container(
-              height: 350,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/grass.jpg'),
-                  fit: BoxFit.cover,
+            Center(
+              child: Container(
+                height: 400,
+                width: 400,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/bgstage/bgstage01.png'),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Stack(
-                children: [
-                  if (_isGridVisible)
-                    Positioned.fill(
-                      child: Column(
-                        children: List.generate(5, (rowIndex) {
-                          return Expanded(
-                            child: Row(
-                              children: List.generate(5, (colIndex) {
-                                return Expanded(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white.withOpacity(0.5),
-                                        width: 0.5,
+                child: Stack(
+                  children: [
+                    if (_isGridVisible)
+                      Positioned.fill(
+                        child: Column(
+                          children: List.generate(5, (rowIndex) {
+                            return Expanded(
+                              child: Row(
+                                children: List.generate(5, (colIndex) {
+                                  return Expanded(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.white.withOpacity(0.5),
+                                          width: 0.5,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              }),
-                            ),
-                          );
-                        }),
+                                  );
+                                }),
+                              ),
+                            );
+                          }),
+                        ),
+                      ),
+                    Positioned(
+                      top: (0 * (350 / 5)) + (350 / 8) - 15,
+                      left: (2 * (350 / 5)) + (350 / 8) - 15,
+                      child: Image.asset(
+                        'assets/gif/charecter+ring/goldring.gif',
+                        width: 30,
+                        height: 30,
                       ),
                     ),
-
-                  // Apple 1
-                  Positioned(
-                    top: (0 * (350 / 5)) + (350 / 8) - 15,
-                    left: (2 * (350 / 5)) + (350 / 8) - 15,
-                    child: Image.asset(
-                      'assets/gif/charecter+ring/goldring.gif',
-                      width: 30,
-                      height: 30,
+                    Positioned(
+                      top: (_characterRow * (350 / 5)) + (350 / 5 / 2) - 50,
+                      left: (_characterCol * (350 / 5)) + (350 / 5 / 2) - 30,
+                      child: Image.asset(
+                        'assets/gif/player/Maruto.gif',
+                        width: 100,
+                        height: 100,
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    top: (_characterRow * (350 / 5)) + (350 / 5 / 2) - 50,
-                    left: (_characterCol * (350 / 5)) + (350 / 5 / 2) - 30,
-                    child: Image.asset(
-                      'assets/gif/player/Maruto.gif',
-                      width: 100,
-                      height: 100,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 5),

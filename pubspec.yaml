@@ -40,11 +40,16 @@ dependencies:
   firebase_database: ^11.3.3
   firebase_storage: ^12.4.3
   cloud_firestore: ^5.6.4
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_launcher_icons: ^0.14.3
+flutter_icons: 
+  android: true 
+  ios: true 
+  image_path: "assets/icons/iconsapp.png"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -62,12 +67,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-  assets: 
-   - assets/1.png
-   - assets/boy.png
+  assets:
    - assets/grass.jpg
-   - assets/apple.png
-   - assets/girl.png
    - assets/m1.png
    - assets/logo.png
    - assets/stage1.png
@@ -172,6 +173,31 @@ flutter:
    - assets/story/11.2.png
    - assets/story/11.3.png
    - assets/story/11.4.png
+   - assets/bgstage/bgstage01.png
+   - assets/bgstage/bgstage02.png
+   - assets/bgstage/bgstage03.png
+   - assets/bgstage/bgstage04.png
+   - assets/bgstage/bgstage05.png
+   - assets/bgstage/bgstage06.png
+   - assets/bgstage/bgsignin.png
+   - assets/icon/sword.png  
+   - assets/icon/shield.png  
+   - assets/gif/weapon/targe.gif
+   - assets/developer/tin.png
+   - assets/developer/new.png
+   - assets/developer/peem.png
+   - assets/developer/tar.png
+   - assets/developer/oat.png
+   - assets/developer/aom.png
+   - assets/icons/iconsapp.png
+
+  fonts:
+    - family: Kanit
+      fonts:
+        - asset: assets/fonts/Kanit-Regular.ttf
+        - asset: assets/fonts/Kanit-Bold.ttf
+          weight: 700
+   
    
   # To add assets to your application, add an assets section, like this:
   # assets:

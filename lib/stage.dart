@@ -15,68 +15,68 @@ class Stage extends StatelessWidget {
   final List<Map<String, dynamic>> stages = [
     {
       "image": "assets/bgstage/bg1.png",
-      "title": "Stage 1",
-      "description": "บทที่1",
+      "title": "อาณาจักรที่สงบสุข",
+      "description": "เรื่องราวของอาณาจักรที่สงบสุข",
       "screen": Stage1()
     },
     {
       "image": "assets/bgstage/bg2.png",
-      "title": "Stage 2",
-      "description": "บทที่2",
+      "title": "เวทย์มนต์",
+      "description": "โค้ดได้พบกับนักเวทย์หญิง",
       "screen": Stage2()
     },
     {
       "image": "assets/bgstage/bg3.png",
-      "title": "Stage 3",
-      "description": "บทที่3",
+      "title": "ถ้ำแร่มานา",
+      "description": "โค้ด และ ชาล็อต ได้ออกตามหาอาวุธโบราณในถ้ำแร่มานา",
       "screen": Stage3()
     },
     {
       "image": "assets/bgstage/bg4.png",
-      "title": "Stage 4",
-      "description": "บทที่4",
+      "title": "หนี",
+      "description": "โค้ด และ ชาล็อต หาทางออกจากถ้ำแร่มานาหลังจากต่อสู้กับปีศาจ",
       "screen": Stage4()
     },
     {
       "image": "assets/bgstage/bg5.png",
-      "title": "Stage 5",
-      "description": "บทที่5",
+      "title": "ชายผมขาว",
+      "description": "ขณะกำลังออกจากถ้ำ โค้ด และ ชาล็อต ได้พบกับชายปริศนาผมขาว",
       "screen": Stage5()
     },
     {
       "image": "assets/bgstage/bg6.png",
-      "title": "Stage 6",
-      "description": "บทที่6",
+      "title": "สมบัติ",
+      "description": "เมื่อทั้งสามได้ออกเดินทางต่อ พวกเขาได้พบกับสมบัติที่ซ่อนอยู่",
       "screen": Stage6()
     },
     {
       "image": "assets/bgstage/bg7.png",
-      "title": "Stage 7",
-      "description": "บทที่7",
+      "title": "กิ้งก่า",
+      "description": "ทั้งสามคนพบกิ้งก่ายักษ์",
       "screen": Stage7()
     },
     {
       "image": "assets/bgstage/bg8.png",
-      "title": "Stage 8",
-      "description": "บทที่8",
+      "title": "ก้าวสู่ป่านรก",
+      "description": "ทั้งสามคนเริ่มเข้าสู่ป่านรกเพื่อตามหาอาวุธโบราณชิ้นต่อไป",
       "screen": Stage8()
     },
     {
       "image": "assets/bgstage/bg9.png",
-      "title": "Stage 9",
-      "description": "บทที่9",
+      "title": "กองเงินกองทอง",
+      "description": "เมื่อทั้งสามได้เข้าสู่ป่านรก พวกเขาได้พบกับกองเงินกองทอง",
       "screen": Stage9()
     },
     {
       "image": "assets/bgstage/bg10.png",
-      "title": "Stage 10",
-      "description": "บทที่10",
+      "title": "จบสงคราม",
+      "description": "ทั้งสามคนได้มาเจอกับราชาปีศาจแล้วจึงเกิดการต่อสู้ครั้งสุดท้าย",
       "screen": Stage10()
     },
     {
       "image": "assets/bgstage/bg11.png",
-      "title": "Stage 11",
-      "description": "บทที่11",
+      "title": "วิวาห์",
+      "description": "หลังจากปราบปีศาจแล้ว โค้ดได้ขอชาล็อตแต่งงาน โดยใช้แหวนที่เขาพบในตอนแรก",
       "screen": Stage11()
     },
   ];

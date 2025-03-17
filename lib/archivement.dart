@@ -28,17 +28,17 @@ class _ArchivementPageState extends State<Archivement> {
   ];
 
   List<String> stageDescriptions = [
-    'จุดเริ่มต้นของ Code',
-    'การพบกับนักเวทหญิง',
-    'ดาบแห่งโค้ด',
-    'เส้นทางที่เต็มไปด้วยกับดัก',
-    'คนป่ากับขวานอัลกอริทึม',
-    'พักเหนื่อย',
-    'สนามประลองอัลกอริทึม',
-    'หมวกเกราะป้องกันไวรัส',
-    'ปรับปรุงโค้ดให้ดีขึ้น',
-    'ศึกสุดท้ายกับบอสใหญ่',
-    'พิธีวิวาห์แห่งความมุ่งมั่น',
+    'อาณาจักรที่สงบสุข',
+    'เวทย์มนต์',
+    'ถ้ำแร่มานา',
+    'หนี',
+    'ชายผมขาว',
+    'สมบัติ',
+    'กิ้งก่า',
+    'ก้าวสู่ป่านรก',
+    'กองเงินกองทอง',
+    'จบสงคราม',
+    'วิวาห์',
   ];
 
   @override
@@ -132,44 +132,38 @@ class _ArchivementPageState extends State<Archivement> {
                   .child('userscodecraft/${_currentUser!.uid}/stages')
                   .onValue,
               builder: (context, snapshot) {
+                List<bool> stageCompletion = List.generate(11, (index) => false);
+
                 if (snapshot.hasData &&
                     !snapshot.hasError &&
                     snapshot.data!.snapshot.value != null) {
                   final stagesData = Map<String, dynamic>.from(
                       snapshot.data!.snapshot.value as Map);
-                  List<bool> stageCompletion = List.generate(11, (index) {
+                  stageCompletion = List.generate(11, (index) {
                     return stagesData['stage${index + 1}'] ?? false;
                   });
-
-                  return GridView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 15,
-                      mainAxisSpacing: 15,
-                      childAspectRatio: 0.75, // ปรับให้สมดุลทุกหน้าจอ
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    itemCount: stageCompletion.length,
-                    itemBuilder: (context, index) {
-                      return AchievementCard(
-                        stage: index + 1,
-                        imagePath: stageImages[index],
-                        description: stageDescriptions[index],
-                        isCompleted: stageCompletion[index],
-                      );
-                    },
-                  );
-                } else {
-                  return Center(
-                    child: Text(
-                      'No data available',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  );
                 }
+
+                return GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                    childAspectRatio: 0.75, // ปรับให้สมดุลทุกหน้าจอ
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  itemCount: stageCompletion.length,
+                  itemBuilder: (context, index) {
+                    return AchievementCard(
+                      stage: index + 1,
+                      imagePath: stageImages[index],
+                      description: stageDescriptions[index],
+                      isCompleted: stageCompletion[index],
+                    );
+                  },
+                );
               },
             ),
             const SizedBox(height: 20),
@@ -195,56 +189,60 @@ class AchievementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.grey[900],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 5, // ให้กรอบมีเงาสวยขึ้น
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    imagePath,
-                    fit: BoxFit.cover,
+    return Container(
+      height: 250, // กำหนดความสูงของ Card
+      width: 180, // กำหนดความกว้างของ Card
+      child: Card(
+        color: Colors.grey[900],
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        elevation: 5, // ให้กรอบมีเงาสวยขึ้น
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 8),
-            ShaderMask(
-              shaderCallback: (bounds) => LinearGradient(
-                colors: [
-                  Color(0xFF0033FF),
-                  Color(0xFF3399FF)
-                ], // ไล่สีจากน้ำเงินเข้มไปฟ้าน้ำทะเล
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ).createShader(bounds),
-              child: Text(
-                'Stage $stage',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white, // ใช้สีขาวเพื่อให้ ShaderMask ทำงาน
+              const SizedBox(height: 8),
+              ShaderMask(
+                shaderCallback: (bounds) => LinearGradient(
+                  colors: [
+                    Color(0xFF0033FF),
+                    Color(0xFF3399FF)
+                  ], // ไล่สีจากน้ำเงินเข้มไปฟ้าน้ำทะเล
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ).createShader(bounds),
+                child: Text(
+                  'Stage $stage',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white, // ใช้สีขาวเพื่อให้ ShaderMask ทำงาน
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              description,
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white70, fontSize: 12),
-            ),
-            const SizedBox(height: 8),
-            Icon(isCompleted ? Icons.check_circle : Icons.cancel,
-                color: isCompleted ? Colors.green : Colors.red, size: 28),
-          ],
+              const SizedBox(height: 4),
+              Text(
+                description,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white70, fontSize: 12),
+              ),
+              const SizedBox(height: 8),
+              Icon(isCompleted ? Icons.check_circle : Icons.cancel,
+                  color: isCompleted ? Colors.green : Colors.red, size: 28),
+            ],
+          ),
         ),
       ),
     );

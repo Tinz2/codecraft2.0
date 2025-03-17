@@ -44,9 +44,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildGradientButton(String text, VoidCallback onPressed) {
     return InkWell(
       onTap: onPressed,
-      borderRadius: BorderRadius.circular(10),// ปรับที่นี่เพื่อเปลี่ยนความโค้งมน
+      borderRadius: BorderRadius.circular(10),
       child: Container(
-        width: 110,//ขนาดความกว้างของปุ่ม
+        width: 110,
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
@@ -79,153 +79,204 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.transparent,
-                backgroundImage: AssetImage('assets/logo.png'),
+      body: Stack(
+        children: [
+          // พื้นหลังโปร่งแสง
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.3, // ทำให้รูปภาพพื้นหลังจางลง
+              child: Image.asset(
+                'assets/bgstage/bgsignin.png',
+                fit: BoxFit.cover,
               ),
-              const SizedBox(height: 20),
-              const Text(
-                'Sign in to your account',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        labelStyle: const TextStyle(color: Colors.white),
-                        filled: true,
-                        fillColor: Colors.white24,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none,
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                          return 'Please enter a valid email';
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        _email = value.trim();
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      obscureText: true,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        labelStyle: const TextStyle(color: Colors.white),
-                        filled: true,
-                        fillColor: Colors.white24,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none,
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        if (value.length < 6) {
-                          return 'Password must be at least 6 characters';
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        _password = value.trim();
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              if (_isLoading)
-                const CircularProgressIndicator(color: Colors.white)
-              else
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildGradientButton('Sign In', () async {
-                      if (_formKey.currentState!.validate()) {
-                        _setLoading(true);
-                        try {
-                          UserCredential? userCredential =
-                              await _auth.signInWithEmailAndPassword(
-                                  _email, _password, context);
-                          if (userCredential != null) {
-                            Navigator.pushReplacementNamed(
-                                context, HomePage.routeName);
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                  content: Text(
-                                      'Login failed: UserCredential is null')),
-                            );
-                          }
-                        } catch (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Login failed: $e')),
-                          );
-                        } finally {
-                          _setLoading(false);
-                        }
-                      }
-                    }),
-                    _buildGradientButton('Sign Up', () async {
-                      if (_formKey.currentState!.validate()) {
-                        _setLoading(true);
-                        try {
-                          UserCredential? userCredential =
-                              await _auth.registerWithEmailAndPassword(
-                                  _email, _password, context);
-                          if (userCredential != null) {
-                            await _saveUserData(
-                                userCredential.user!.uid, _email);
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    profilesetup(userData: {'email': _email}),
-                              ),
-                            );
-                          }
-                        } catch (e) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Sign up failed: $e')),
-                          );
-                        } finally {
-                          _setLoading(false);
-                        }
-                      }
-                    }),
-                  ],
-                ),
-            ],
+            ),
           ),
-        ),
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(5),
+              margin: const EdgeInsets.symmetric(horizontal: 24),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.blueAccent.withOpacity(0.5),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  
+                  color: Colors.black.withOpacity(0.9),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.transparent,
+                      backgroundImage: AssetImage('assets/logo.png'),
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Sign in to your account',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                              labelStyle: const TextStyle(color: Colors.white),
+                              filled: true,
+                              fillColor: Colors.white24,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your email';
+                              }
+                              if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                                  .hasMatch(value)) {
+                                return 'Please enter a valid email';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              _email = value.trim();
+                            },
+                          ),
+                          const SizedBox(height: 16),
+                          TextFormField(
+                            obscureText: true,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                              labelStyle: const TextStyle(color: Colors.white),
+                              filled: true,
+                              fillColor: Colors.white24,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your password';
+                              }
+                              if (value.length < 6) {
+                                return 'Password must be at least 6 characters';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              _password = value.trim();
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          if (_isLoading)
+                            const CircularProgressIndicator(color: Colors.white)
+                          else
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                _buildGradientButton('Sign In', () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    _setLoading(true);
+                                    try {
+                                      UserCredential? userCredential =
+                                          await _auth
+                                              .signInWithEmailAndPassword(
+                                                  _email, _password, context);
+                                      if (userCredential != null) {
+                                        Navigator.pushReplacementNamed(
+                                            context, HomePage.routeName);
+                                      }
+                                    } catch (e) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                            content: Text('Login failed: $e')),
+                                      );
+                                    } finally {
+                                      _setLoading(false);
+                                    }
+                                  }
+                                }),
+                                _buildGradientButton('Sign Up', () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    _setLoading(true);
+                                    try {
+                                      UserCredential? userCredential =
+                                          await _auth
+                                              .registerWithEmailAndPassword(
+                                                  _email, _password, context);
+                                      if (userCredential != null) {
+                                        await _saveUserData(
+                                            userCredential.user!.uid, _email);
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                profilesetup(
+                                                    userData: {'email': _email}),
+                                          ),
+                                        );
+                                      }
+                                    } catch (e) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                            content: Text('Sign up failed: $e')),
+                                      );
+                                    } finally {
+                                      _setLoading(false);
+                                    }
+                                  }
+                                }),
+                              ],
+                            ),
+                          const SizedBox(height: 20),
+                          TextButton(
+                            onPressed: () {
+                              if (_email.isNotEmpty) {
+                                _auth.resetPassword(_email, context);
+                              }
+                            },
+                            child: const Text(
+                              'Forgot Password?',
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

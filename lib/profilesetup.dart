@@ -129,103 +129,149 @@ class _profilesetupState extends State<profilesetup> {
     );
   }
 
+  Widget _buildGradientButton(String text, VoidCallback onPressed) {
+    return InkWell(
+      onTap: onPressed,
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        width: 110,
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.blueAccent.withOpacity(0.5),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('แก้ไขโปรไฟล์', style: TextStyle(color: Colors.white)),
+        title: Text('Edit Profile', style: TextStyle(color: Colors.white ,fontFamily: 'Kanit', ) , ),
         backgroundColor: Colors.black,
         iconTheme: IconThemeData(color: Colors.white),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: GestureDetector(
-                    onTap: () => showModalBottomSheet(
-                      context: context,
-                      builder: (context) => SafeArea(
-                        child: Wrap(
-                          children: [
-                            ListTile(
-                              leading: Icon(Icons.camera, color: Colors.black),
-                              title: Text('ถ่ายรูป', style: TextStyle(color: Colors.black)),
-                              onTap: () {
-                                Navigator.pop(context);
-                                _pickImage(ImageSource.camera);
-                              },
+      body: Stack(
+        children: [
+          // พื้นหลังโปร่งแสง
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.3, // ทำให้รูปภาพพื้นหลังจางลง
+              child: Image.asset(
+                'assets/bgstage/bgsignin.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(5),
+              margin: const EdgeInsets.symmetric(horizontal: 24),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF0033FF), Color(0xFF3399FF)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.blueAccent.withOpacity(0.5),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.9),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: GestureDetector(
+                            onTap: () => showModalBottomSheet(
+                              context: context,
+                              builder: (context) => SafeArea(
+                                child: Wrap(
+                                  children: [
+                                    ListTile(
+                                      leading: Icon(Icons.camera, color: Colors.black),
+                                      title: Text('ถ่ายรูป', style: TextStyle(color: Colors.black)),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        _pickImage(ImageSource.camera);
+                                      },
+                                    ),
+                                    ListTile(
+                                      leading: Icon(Icons.photo_library, color: Colors.black),
+                                      title: Text('เลือกรูปจากแกลอรี่', style: TextStyle(color: Colors.black)),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        _pickImage(ImageSource.gallery);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                            ListTile(
-                              leading: Icon(Icons.photo_library, color: Colors.black),
-                              title: Text('เลือกรูปจากแกลอรี่', style: TextStyle(color: Colors.black)),
-                              onTap: () {
-                                Navigator.pop(context);
-                                _pickImage(ImageSource.gallery);
-                              },
+                            child: CircleAvatar(
+                              radius: 50,
+                              backgroundColor: Colors.grey[800],
+                              backgroundImage: _profileImage != null
+                                  ? FileImage(File(_profileImage!.path))
+                                  : (_profileImageUrl != null ? NetworkImage(_profileImageUrl!) : null) as ImageProvider?,
+                              child: _profileImage == null && _profileImageUrl == null
+                                  ? Icon(Icons.camera_alt, color: Colors.white, size: 50)
+                                  : null,
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundColor: Colors.grey[800],
-                      backgroundImage: _profileImage != null
-                          ? FileImage(File(_profileImage!.path))
-                          : (_profileImageUrl != null ? NetworkImage(_profileImageUrl!) : null) as ImageProvider?,
-                      child: _profileImage == null && _profileImageUrl == null
-                          ? Icon(Icons.camera_alt, color: Colors.white, size: 50)
-                          : null,
+                        SizedBox(height: 20),
+                        _buildTextField(_firstName, 'ชื่อ (First Name)'),
+                        _buildTextField(_lastName, 'นามสกุล (Last Name)'),
+                        _buildTextField(_username, 'ชื่อผู้ใช้ (Username)'),
+                        _buildTextField(_phoneNumber, 'เบอร์โทรศัพท์ (Phone Number)'),
+                        SizedBox(height: 20),
+                        Center(
+                          child: _buildGradientButton('Save', _submitForm),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
-                _buildTextField(_firstName, 'ชื่อ (First Name)'),
-                _buildTextField(_lastName, 'นามสกุล (Last Name)'),
-                _buildTextField(_username, 'ชื่อผู้ใช้ (Username)'),
-                _buildTextField(_phoneNumber, 'เบอร์โทรศัพท์ (Phone Number)'),
-                SizedBox(height: 20),
-                Center(
-  child: Container(
-    decoration: BoxDecoration(
-      gradient: LinearGradient(
-        colors: [Color(0xFF0033FF), Color(0xFF3399FF)], // ไล่สีจากน้ำเงินเข้มไปอ่อน
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      ),
-      borderRadius: BorderRadius.circular(10), // มุมโค้งมน
-    ),
-    child: ElevatedButton(
-      onPressed: _submitForm,
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10), // ขนาดปุ่มใหญ่ขึ้น
-        backgroundColor: Colors.transparent, // ทำให้เห็น Gradient
-        shadowColor: Colors.transparent, // ปิดเงาเพื่อไม่ให้รบกวน Gradient
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10), // ให้มุมปุ่มโค้งตรงกับ Container
-        ),
-      ),
-      child: const Text(
-        'Save',
-        style: TextStyle(
-          fontSize: 18, 
-          fontWeight: FontWeight.bold,
-          color: Colors.white, // สีตัวหนังสือ
-        ),
-      ),
-    ),
-  ),
-)
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -279,7 +279,7 @@ class _Stage4State extends State<Stage4> {
                 ).createShader(bounds);
               },
               child: Text(
-                'Stage 4',
+                'หนี',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -335,12 +335,13 @@ class _Stage4State extends State<Stage4> {
               ),
             ],
             SizedBox(height: 20),
-            Container(
-              height: 350,
-              width: double.infinity,
+             Center(
+              child: Container(
+              height: 400,
+              width: 400,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/grass.jpg'),
+                  image: AssetImage('assets/bgstage/bgstage02.png'),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(10),
@@ -413,6 +414,7 @@ class _Stage4State extends State<Stage4> {
                   ),
                 ],
               ),
+            ),
             ),
             SizedBox(height: 5),
             Row(
