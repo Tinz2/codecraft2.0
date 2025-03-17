@@ -63,16 +63,14 @@ class AuthService {
 
 //resetpassword
   Future<void> resetPassword(String email, BuildContext context) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-
     try {
-      await auth.sendPasswordResetEmail(email: email);
-      print('Password reset email sent');
+      await _auth.sendPasswordResetEmail(email: email);
+      showSnackbar(context, 'Password reset email sent');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        showSnackbar(context, 'No user found for that email.');
       } else {
-        print('Something went wrong: $e');
+        showSnackbar(context, 'Something went wrong: ${e.message}');
       }
     }
   }

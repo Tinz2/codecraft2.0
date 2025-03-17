@@ -139,9 +139,9 @@ class _Stage11State extends State<Stage11> {
                           child: Text('Previous',
                               style: TextStyle(color: Colors.blue)),
                         ),
-                      Text('${_currentPage + 1}/5',
+                      Text('${_currentPage + 1}/6',
                           style: TextStyle(color: Colors.white)),
-                      if (_currentPage < 3)
+                      if (_currentPage < 4)
                         TextButton(
                           onPressed: () {
                             setState(() {
@@ -219,7 +219,7 @@ class _Stage11State extends State<Stage11> {
                 ).createShader(bounds);
               },
               child: Text(
-                'Stage 11',
+                'วิวาห์',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -276,12 +276,13 @@ class _Stage11State extends State<Stage11> {
               ),
             ],
             SizedBox(height: 20),
-            Container(
-              height: 350,
-              width: double.infinity,
+             Center(
+              child: Container(
+              height: 400,
+              width: 400,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/grass.jpg'),
+                  image: AssetImage('assets/bgstage/bgstage06.png'),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(10),
@@ -477,6 +478,7 @@ class _Stage11State extends State<Stage11> {
                   ),
                 ],
               ),
+            ),
             ),
             Row(
               children: [
