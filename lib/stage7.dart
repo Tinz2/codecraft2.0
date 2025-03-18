@@ -49,7 +49,14 @@ class _Stage7State extends State<Stage7> {
 
   void _moveCharacter(String command) {
     setState(() {
-      if (command == "align-self: center;") {
+      if (command.isEmpty) {
+        _princeRow = 0;
+        _princeCol = 0;
+        _princessRow = 0;
+        _princessCol = 1;
+        _prince1Row = 0;
+        _prince1Col = 2;
+      } else if (command == "align-self: center;") {
         // เจ้าชายย้ายไปที่ (row 0, col 1)
         _princeRow = 0;
         _princeCol = 0;
@@ -537,7 +544,11 @@ class _Stage7State extends State<Stage7> {
                               border: InputBorder.none,
                             ),
                             onChanged: (text) {
-                              _moveCharacter(text.trim());
+                              if (text.isEmpty) {
+                                _moveCharacter('');
+                              } else {
+                                _moveCharacter(text.trim());
+                              }
                             },
                           ),
                         ),

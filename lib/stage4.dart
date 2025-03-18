@@ -45,7 +45,12 @@ class _Stage4State extends State<Stage4> {
 
   void _moveCharacter(String command) {
     setState(() {
-      if (command == "align-items: flex-end;") {
+      if (command.isEmpty) {
+        _princeRow = 0;
+        _princeCol = 0;
+        _princessRow = 0;
+        _princessCol = 1;
+      } else if (command == "align-items: flex-end;") {
         // เจ้าชายย้ายไปที่ (row 0, col 1)
         _princeRow = 4;
         _princeCol = 0;

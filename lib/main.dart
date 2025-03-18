@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           titleTextStyle: TextStyle(color: Colors.white, fontSize: 20.0),
         ),
       ),
-      home: SplashScreen(), // เริ่มจาก SplashScreen ก่อน
+      // home: SplashScreen(), // เริ่มจาก SplashScreen ก่อน
       routes: {
         LoginPage.routeName: (context) => LoginPage(),
         HomePage.routeName: (context) => HomePage(),

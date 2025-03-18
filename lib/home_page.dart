@@ -312,7 +312,10 @@ class __GameAreaState extends State<_GameArea> {
 
   void _moveCharacter(String command) {
     setState(() {
-      if (command == "justify-content: flex-end;") {
+      if (command.isEmpty) {
+        _characterRow = 0;
+        _characterCol = 0;
+      } else if (command == "justify-content: flex-end;") {
         _characterRow = 0;
         _characterCol = 4;
       } else if (command == "justify-content: center;") {
@@ -554,7 +557,11 @@ class __GameAreaState extends State<_GameArea> {
                             border: InputBorder.none,
                           ),
                           onChanged: (text) {
-                            _moveCharacter(text.trim());
+                            if (text.isEmpty) {
+                              _moveCharacter('');
+                            } else {
+                              _moveCharacter(text.trim());
+                            }
                           },
                         ),
                       ),

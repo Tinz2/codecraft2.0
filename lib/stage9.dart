@@ -44,8 +44,14 @@ class _Stage9State extends State<Stage9> {
     String command = _answerController1.text.trim() +
         _answerController2.text.trim() +
         _answerController3.text.trim();
-    setState(() {
-      if (command ==
+    setState(() {if (command.isEmpty) {
+        _princeRow = 0;
+        _princeCol = 0;
+        _princessRow = 0;
+        _princessCol = 1;
+        _prince1Row = 0;
+        _prince1Col = 3;
+      } else if (command ==
           "flex-direction: row-reverse;justify-content: center;align-items: center;") {
         _princeRow = 2;
         _princeCol = 3;

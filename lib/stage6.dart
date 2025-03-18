@@ -49,8 +49,14 @@ class _Stage6State extends State<Stage6> {
   ];
 
   void _moveCharacter(String command) {
-    setState(() {
-      if (command ==
+    setState(() {if (command.isEmpty) {
+        _princeRow = 0;
+        _princeCol = 0;
+        _princessRow = 0;
+        _princessCol = 1;
+        _prince1Row = 0;
+        _prince1Col = 3;
+      } else if (command ==
           "flex-direction: row-reverse; justify-content: center; align-items: center;") {
         _princeRow = 2;
         _princeCol = 3;
@@ -123,19 +129,32 @@ class _Stage6State extends State<Stage6> {
   }
 
   void _checkAnswer() {
-    setState(() {
-      _princeRow = 2;
-      _princeCol = 3;
+    String userAnswer = _answerController1.text.trim() +
+        " " +
+        _answerController2.text.trim() +
+        " " +
+        _answerController3.text.trim();
 
-      _princessRow = 2;
-      _princessCol = 2;
+    if (userAnswer ==
+        "flex-direction: row-reverse; justify-content: center; align-items: center;") {
+      setState(() {
+        _princeRow = 2;
+        _princeCol = 3;
 
-      _prince1Row = 2;
-      _prince1Col = 1;
-    });
+        _princessRow = 2;
+        _princessCol = 2;
 
-    _saveStageCompletion();
-    _showCompletionDialog();
+        _prince1Row = 2;
+        _prince1Col = 1;
+      });
+
+      _saveStageCompletion();
+      _showCompletionDialog();
+    } else {
+      setState(() {
+        _feedback = 'Incorrect answer. Please try again.';
+      });
+    }
   }
 
   void _showCompletionDialog() {

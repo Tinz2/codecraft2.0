@@ -41,7 +41,10 @@ class _Stage2State extends State<Stage2> {
   ];
   void _moveCharacter(String command) {
     setState(() {
-      if (command == "justify-content: space-between;") {
+      if (command.isEmpty) {
+        _characterRow = 0;
+        _characterCol = 1;
+      } else if (command == "justify-content: space-between;") {
         _characterRow = 0;
         _characterCol = 4;
       } else if (command == "justify-content: center;") {

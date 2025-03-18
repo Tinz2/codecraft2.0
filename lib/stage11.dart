@@ -35,7 +35,10 @@ class _Stage11State extends State<Stage11> {
 
   void _moveCharacter() {
     String command = _answerController1.text.trim();
-    if (command == "align-items: center;") {
+    if (command.isEmpty) {
+        _princeRow = 1;
+        _princeCol = 0;
+      } else if (command == "align-items: center;") {
       setState(() {
         _princeRow = 2;
         _princeCol = 1;

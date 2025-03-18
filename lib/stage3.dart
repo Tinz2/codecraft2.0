@@ -45,11 +45,11 @@ class _Stage3State extends State<Stage3> {
 
   void _moveCharacter(String command) {
     setState(() {
+     
       if (command == "justify-content: space-evenly;") {
         // เจ้าชายย้ายไปที่ (row 0, col 1)
         _princeRow = 0;
         _princeCol = 3;
-
         // เจ้าหญิงย้ายไปที่ (row 0, col 3)
         _princessRow = 0;
         _princessCol = 1;
@@ -98,6 +98,11 @@ class _Stage3State extends State<Stage3> {
         _princeCol = 3;
         _princessRow = 4;
         _princessCol = 3;
+      } else if (command.isEmpty) {
+        _princeRow = 0;
+        _princeCol = 0;
+        _princessRow = 0;
+        _princessCol = 1;
       } else if (command == "align-self: center;") {
         _princeRow = 1;
         _princeCol = 3;

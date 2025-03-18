@@ -46,8 +46,12 @@ class _Stage5State extends State<Stage5> {
   ];
 
   void _moveCharacter(String command) {
-    setState(() {
-      if (command == "flex-direction: row-reverse;") {
+    setState(() {if (command.isEmpty) {
+       _princeRow = 0;
+        _princeCol = 0;
+        _princessRow = 0;
+        _princessCol = 1;
+      } else if (command == "flex-direction: row-reverse;") {
         // เจ้าชายย้ายไปที่ (row 0, col 1)
         _princeRow = 0;
         _princeCol = 2;

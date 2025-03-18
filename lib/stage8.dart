@@ -123,19 +123,32 @@ class _Stage8State extends State<Stage8> {
   }
 
   void _checkAnswer() {
-    setState(() {
-      _princeRow = 1;
-      _princeCol = 2;
+    String userAnswer = _answerController1.text.trim() +
+        " " +
+        _answerController2.text.trim() +
+        " " +
+        _answerController3.text.trim();
 
-      _princessRow = 2;
-      _princessCol = 2;
+    if (userAnswer ==
+        "flex-direction: column-reverse; justify-content: flex-end; align-items: center;") {
+      setState(() {
+        _princeRow = 1;
+        _princeCol = 2;
 
-      _prince1Row = 0;
-      _prince1Col = 2;
-    });
+        _princessRow = 2;
+        _princessCol = 2;
 
-    _saveStageCompletion();
-    _showCompletionDialog();
+        _prince1Row = 0;
+        _prince1Col = 2;
+      });
+
+      _saveStageCompletion();
+      _showCompletionDialog();
+    } else {
+      setState(() {
+        _feedback = 'Incorrect answer. Please try again.';
+      });
+    }
   }
 
   void _showCompletionDialog() {
