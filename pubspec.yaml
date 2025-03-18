@@ -190,6 +190,8 @@ flutter:
    - assets/developer/oat.png
    - assets/developer/aom.png
    - assets/icons/iconsapp.png
+   - assets/icons/splash.gif
+   - assets/icons/bgsplash.png
 
   fonts:
     - family: Kanit
