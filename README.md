@@ -1,10 +1,10 @@
 # codecraft2
 
-A new Flutter project.
+เป็นแอปพลอเคชั่ที่ใช้ฝึกพื้นฐาน CSS ผ่านการเล่นเกมในแต่ละด่าน โดยการใช้คำสั่ง CSS ในการควบคุมตัวละคร มีเนื้อเรื่องและการ์ตูนให้อ่าน มีเนื้อหาให้เรียนรู้พร้อมไปแต่ละด่าน
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+สามารถทดลองโหลดมาเล่นเป็น APK ได้ในลิงก์นี้ https://drive.google.com/drive/folders/1yvUY7okSzmRASdLEXLvXEjpguExVdHT6?usp=sharing
 
 A few resources to get you started if this is your first Flutter project:
 
